@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import AppBar from '@material-ui/core/AppBar';
+import React, {Component} from 'react';
+import Header from './Header';
 
-
-export default class Home extends Component  {
-    render(){
-        return <AppBar />
+export default class Home extends Component {
+    render() {
+        return (
+            <Header/>
+        )
     }
-
 };

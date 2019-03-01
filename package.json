@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "material-icons-react": "^1.0.4",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "typeface-quicksand": "0.0.71"
   },
   "scripts": {
     "start": "react-scripts start",
