@@ -9,18 +9,17 @@ require("typeface-quicksand");
 const styles = {
     social: {
         display: 'flex',
-        marginLeft: "auto"
+        marginLeft: "auto",
     }
 };
-
 
 export default class Header extends Component {
     render() {
         return (<div>
                     <AppBar elevation="1">
                         <Toolbar>
-                            <Typography variant="title" color="secondary">remote-work</Typography>
-                            <div style={styles.social}><MaterialIcon icon="email"/></div>
+                            <Typography variant="title" color="secondary">remoteWork(tech)</Typography>
+                            <div style={styles.social}><MaterialIcon icon="email" color='#27C4A8'/></div>
                         </Toolbar>
                     </AppBar>
             </div>

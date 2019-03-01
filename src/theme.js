@@ -4,17 +4,17 @@ const theme = createMuiTheme({
     palette: {
         primary: {
             // light: will be calculated from palette.primary.main,
-            main: "#FFFFFD"
+            main: "#EBEBEB"
             // dark: will be calculated from palette.primary.main,
             // contrastText: will be calculated to contrast with palette.primary.main
         },
         secondary: {
-            main: "#27C4A8"
+            main: "#A24FFC"
             // dark: will be calculated from palette.secondary.main,
         },
 
         background: {
-            default: "#F9F7FF"
+            default: "#FFFFFF"
         }
         // error: will use the default color
     },
