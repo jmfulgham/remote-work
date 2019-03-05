@@ -5,12 +5,8 @@ import JobBoard from './JobBoard'
 const styles = {
     parent: {
         display: 'flex',
-
-    },
-    // container: {
-    //     order: '1'
-    // }
-}
+    }
+};
 
 export default class Home extends Component {
     render() {
