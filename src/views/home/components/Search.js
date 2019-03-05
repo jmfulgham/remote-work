@@ -4,7 +4,7 @@ import MaterialIcon from 'material-icons-react';
 
 const styles = {
     search: {
-        padding: '6rem'
+        paddingTop: '6rem'
     },
     textField: {
         width: '500px'
