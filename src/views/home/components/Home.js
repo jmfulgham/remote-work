@@ -1,10 +1,31 @@
 import React, {Component} from 'react';
 import Header from './Header';
+import Search from './Search'
+import JobBoard from './JobBoard'
+const styles = {
+    parent: {
+        display: 'flex',
+
+    },
+    // container: {
+    //     order: '1'
+    // }
+}
 
 export default class Home extends Component {
     render() {
         return (
-            <Header/>
+            <div className="parentContainer">
+                <div className="body" style={styles.parent}>
+                    <Header/>
+                </div>
+                <div className="search">
+                    <Search/>
+                </div>
+                <div className="job-board">
+                    <JobBoard />
+                </div>
+            </div>
         )
     }
 };

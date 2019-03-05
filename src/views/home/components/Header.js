@@ -9,6 +9,7 @@ require("typeface-quicksand");
 const styles = {
     social: {
         display: 'flex',
+        flexGrow: '1',
         marginLeft: "auto",
     }
 };
