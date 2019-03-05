@@ -18,7 +18,7 @@ describe('App', ()=>{
 
   it('renders Home component', ()=>{
     let wrapper = shallow(<App />);
-    expect(wrapper.find(<Home/>).exists()).toBe(true);
+    expect(wrapper.find(Home).exists()).toBe(true);
   });
 
 });
