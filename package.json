@@ -26,6 +26,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0"
   }
