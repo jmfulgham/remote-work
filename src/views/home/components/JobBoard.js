@@ -26,7 +26,6 @@ export default class JobBoard extends Component {
     let remoteOkJobs= await this.remoteOkService.getRemoteOkJobs();
     let githubJobs= await this.gitHubService.getAllGitHubRemoteJobs();
     this.setState({remoteOkJobs, githubJobs});
-    console.log(this.state)
 }
 
     render(){
