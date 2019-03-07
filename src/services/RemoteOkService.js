@@ -1,12 +1,15 @@
+const axios = require('axios');
 export default class RemoteOkService {
 
     getRemoteOkJobs() {
-        const axios = require('axios');
+        let remoteOkUrl = 'https://remoteok.io/api';
         return axios({
             method:'get',
-            url:'https://remoteok.io/api'
+            url: `${remoteOkUrl}`
         }).then((response) => {
                return response.data
-            });
+            }).catch(e=>{
+                return e
+        });
     }
 }

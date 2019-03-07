@@ -1,11 +1,17 @@
+const axios = require('axios');
 export default class GitHubService {
-    async getAllGitHubRemoteJobs(){
-        let res = await fetch('https://jobs.github.com/positions.json?location=remote');
 
-        if(res.ok){
-            return await res
-        } else{
-            return ''
-        }
+     getAllGitHubRemoteJobs(){
+
+        let githubJobsUrl = 'https://jobs.github.com/positions?location=remote';
+        return axios({
+            method:'get',
+            url: 'https://jobs.github.com/positions.json?location=remote'
+        }).then((response) => {
+            return response.data;
+        }).catch(e =>{
+            console.log(e)
+        })
     }
 }
+

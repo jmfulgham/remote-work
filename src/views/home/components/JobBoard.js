@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MUIDataTable from "mui-datatables";
 import RemoteOkService from '../../../services/RemoteOkService';
+import GitHubService from "../../../services/GitHubService";
 
 const styles = {
     container: {
@@ -17,13 +18,15 @@ export default class JobBoard extends Component {
         super(props);
         this.state = {};
         this.remoteOkService = new RemoteOkService();
+        this.gitHubService = new GitHubService();
         this.columns = ['Job Title', 'Company', 'Source', 'Focus', 'Apply'];
     };
 
  async componentDidMount(){
     let remoteOkJobs= await this.remoteOkService.getRemoteOkJobs();
-    this.setState({remoteOkJobs});
-    console.log(this.state);
+    let githubJobs= await this.gitHubService.getAllGitHubRemoteJobs();
+    this.setState({remoteOkJobs, githubJobs});
+    console.log(this.state)
 }
 
     render(){
