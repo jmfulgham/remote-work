@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9ac46418-eb4e-41bd-894c-c22141188c1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GitHubService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GitHubService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/RemoteOkService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/RemoteOkService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/home/components/JobBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/JobBoard.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -21,13 +20,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/home/components/Header.js">
+        <entry file="file://$PROJECT_DIR$/src/views/home/components/JobBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+            <state relative-caret-position="405">
+              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/services/GitHubService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -41,53 +58,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/home/components/JobBoard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="135">
+              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/home/components/Home.js">
+        <entry file="file://$PROJECT_DIR$/src/views/home/components/Search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="90">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -113,22 +97,29 @@
         <option value="$PROJECT_DIR$/src/App.test.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/theme.js" />
         <option value="$PROJECT_DIR$/src/views/tests/Home.test.js" />
         <option value="$PROJECT_DIR$/src/views/home/components/Search.js" />
         <option value="$PROJECT_DIR$/src/views/home/components/Home.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/views/home/components/Header.js" />
+        <option value="$PROJECT_DIR$/src/services/test/GitHubService.test.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/services/RemoteOkService.js" />
         <option value="$PROJECT_DIR$/src/views/home/components/JobBoard.js" />
+        <option value="$PROJECT_DIR$/src/services/GitHubService.js" />
       </list>
     </option>
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="20" />
-    <option name="y" value="23" />
-    <option name="width" value="1660" />
-    <option name="height" value="948" />
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -138,7 +129,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,6 +140,12 @@
               <item name="remote-work" type="b2602c69:ProjectViewProjectNode" />
               <item name="remote-work" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="remote-work" type="b2602c69:ProjectViewProjectNode" />
+              <item name="remote-work" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="remote-work" type="b2602c69:ProjectViewProjectNode" />
@@ -176,6 +172,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -244,6 +241,33 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="GitHubService" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/services/test/GitHubService.test.js" />
+      <test-names>
+        <test-name value="GitHubService" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="GitHubService.returns a status 200 on gtAllGitHubRemoteJobs" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/services/test/GitHubService.test.js" />
+      <test-names>
+        <test-name value="GitHubService" />
+        <test-name value="returns a status 200 on gtAllGitHubRemoteJobs" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="&lt;Home/&gt;" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -272,10 +296,14 @@
       <item itemvalue="Jest.App.renders Home component" />
       <item itemvalue="Jest.App" />
       <item itemvalue="Jest.&lt;Home/&gt;" />
+      <item itemvalue="Jest.GitHubService" />
+      <item itemvalue="Jest.GitHubService.returns a status 200 on gtAllGitHubRemoteJobs" />
       <item itemvalue="npm.start" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.GitHubService" />
+        <item itemvalue="Jest.GitHubService.returns a status 200 on gtAllGitHubRemoteJobs" />
         <item itemvalue="Jest.&lt;Home/&gt;" />
         <item itemvalue="Jest.App" />
         <item itemvalue="Jest.App.renders Home component" />
@@ -295,44 +323,45 @@
       <workItem from="1551477368561" duration="1026000" />
       <workItem from="1551480881974" duration="384000" />
       <workItem from="1551481331076" duration="3892000" />
-      <workItem from="1551664955769" duration="4673000" />
+      <workItem from="1551664955769" duration="6912000" />
+      <workItem from="1551975455859" duration="6988000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="App_renders_Home_component - 2019.03.01 at 17h 10m 33s.xml">
-      <configuration name="App.renders Home component" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 35m 16s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.01 at 17h 29m 23s.xml">
-      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 36m 22s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.01 at 17h 31m 43s.xml">
-      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 38m 30s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.01 at 17h 32m 13s.xml">
-      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 39m 18s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="App_renders_Home_component - 2019.03.01 at 17h 43m 25s.xml">
-      <configuration name="App.renders Home component" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 41m 16s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="App_renders_Home_component - 2019.03.01 at 17h 43m 37s.xml">
-      <configuration name="App.renders Home component" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 41m 38s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="App - 2019.03.01 at 17h 43m 47s.xml">
-      <configuration name="App" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 42m 04s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="_Home__ - 2019.03.01 at 18h 56m 37s.xml">
-      <configuration name="&lt;Home/&gt;" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService_returns_a_status_200_on_gtAllGitHubRemoteJobs - 2019.03.04 at 20h 42m 17s.xml">
+      <configuration name="GitHubService.returns a status 200 on gtAllGitHubRemoteJobs" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="_Home__ - 2019.03.01 at 18h 57m 18s.xml">
-      <configuration name="&lt;Home/&gt;" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService_returns_a_status_200_on_gtAllGitHubRemoteJobs - 2019.03.04 at 20h 42m 26s.xml">
+      <configuration name="GitHubService.returns a status 200 on gtAllGitHubRemoteJobs" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="_Home__ - 2019.03.01 at 18h 57m 30s.xml">
-      <configuration name="&lt;Home/&gt;" configurationId="JavaScriptTestRunnerJest" />
+    <history-entry file="GitHubService - 2019.03.04 at 20h 43m 02s.xml">
+      <configuration name="GitHubService" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11430000" />
+    <option name="totallyTimeSpent" value="22321000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -347,13 +376,33 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16937914" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1880651" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24591836" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.49489796" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32827103" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32827103" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.29693878" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1880651" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34591836" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -362,85 +411,31 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32827103" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.29693878" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="TypeScript" order="11" weight="0.32959184" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/App.test.js</url>
-          <line>10</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/public/icons/email48.png" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="15" lean-forward="true" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="38" />
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/tests/Home.test.js">
+    <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/Search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/home/components/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/theme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="26" />
+        <state relative-caret-position="30">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -454,30 +449,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/logo.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/tests/Home.test.js" />
+    <entry file="file://$PROJECT_DIR$/src/views/home/components/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        <state>
+          <caret selection-end-column="13" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
+    <entry file="file://$PROJECT_DIR$/src/App.test.js" />
+    <entry file="file://$PROJECT_DIR$/src/services/test/GitHubService.test.js" />
+    <entry file="file://$PROJECT_DIR$/public/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/home/components/Search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/theme.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/RemoteOkService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/home/components/JobBoard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        <state relative-caret-position="405">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/GitHubService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
