@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import MUIDataTable from "mui-datatables";
+import RemoteOkService from '../../../services/RemoteOkService';
 
 const styles = {
     container: {
@@ -15,14 +16,17 @@ export default class JobBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.remoteOkService = new RemoteOkService();
         this.columns = ['Job Title', 'Company', 'Source', 'Focus', 'Apply'];
     };
 
-// async componentDidMount(){
-//
-// }
+ async componentDidMount(){
+    let remoteOkJobs= await this.remoteOkService.getRemoteOkJobs();
+    this.setState({remoteOkJobs});
+    console.log(this.state);
+}
 
-    render() {
+    render(){
         return (
             <div style={styles.container}>
                 <MUIDataTable

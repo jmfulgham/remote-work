@@ -1,12 +1,12 @@
 export default class RemoteOkService {
 
-    async getRemoteOkJobs(){
-        let res = await fetch('https://remoteok.io/api');
-        if (res.ok){
-            return await res
-        }else{
-            return ''
-        }
+    getRemoteOkJobs() {
+        const axios = require('axios');
+        return axios({
+            method:'get',
+            url:'https://remoteok.io/api'
+        }).then((response) => {
+               return response.data
+            });
     }
-
 }
