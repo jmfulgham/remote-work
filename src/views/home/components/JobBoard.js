@@ -18,7 +18,9 @@ export default class JobBoard extends Component {
         this.columns = ['Job Title', 'Company', 'Source', 'Focus', 'Apply'];
     };
 
-
+// async componentDidMount(){
+//
+// }
 
     render() {
         return (
