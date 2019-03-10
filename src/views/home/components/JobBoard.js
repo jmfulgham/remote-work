@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MUIDataTable from "mui-datatables";
 import RemoteOkService from '../../../services/RemoteOkService';
 import GitHubService from "../../../services/GitHubService";
+import StackOverflowService from "../../../services/StackOverflowService";
 
 const styles = {
     container: {
@@ -19,21 +20,26 @@ export default class JobBoard extends Component {
         this.state = {};
         this.remoteOkService = new RemoteOkService();
         this.gitHubService = new GitHubService();
+        this.stackOverflowService = new StackOverflowService();
         this.columns = ['Job Title', 'Company', 'Source', 'Focus', 'Apply'];
     };
 
- async componentDidMount(){
-    let remoteOkJobs= await this.remoteOkService.getRemoteOkJobs();
-    let githubJobs= await this.gitHubService.getAllGitHubRemoteJobs();
-    this.setState({remoteOkJobs, githubJobs});
-}
 
-    render(){
+    async componentDidMount() {
+        let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
+        let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
+        let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
+        this.setState({remoteOkJobs, githubJobs, stackOverflowJobs});
+    }
+
+    render() {
         return (
             <div style={styles.container}>
                 <MUIDataTable
                     title={"Job Board"}
-                    columns={this.columns}/>
+                    columns={this.columns}
+                    data={"Testing, I think"}
+                />
             </div>
         )
     }
