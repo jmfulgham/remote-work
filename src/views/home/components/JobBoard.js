@@ -21,7 +21,7 @@ export default class JobBoard extends Component {
         this.remoteOkService = new RemoteOkService();
         this.gitHubService = new GitHubService();
         this.stackOverflowService = new StackOverflowService();
-        this.columns = ['Job Title', 'Company', 'Source', 'Focus', 'Apply'];
+        this.columns = ['Position', 'Company', 'Source', 'Focus', 'Apply'];
     };
 
 
@@ -29,7 +29,7 @@ export default class JobBoard extends Component {
         let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
         let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
         let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
-        this.setState({remoteOkJobs, githubJobs, stackOverflowJobs});
+        this.setState({jobs: {remoteOkJobs, githubJobs, stackOverflowJobs}});
     }
 
     render() {
@@ -38,7 +38,6 @@ export default class JobBoard extends Component {
                 <MUIDataTable
                     title={"Job Board"}
                     columns={this.columns}
-                    data={"Testing, I think"}
                 />
             </div>
         )
