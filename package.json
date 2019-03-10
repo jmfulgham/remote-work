@@ -6,12 +6,16 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
+    "feed-to-json-promise": "^1.8.0",
     "material-icons-react": "^1.0.4",
     "mui-datatables": "2.0.0-beta-41",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-scripts": "2.1.5",
-    "typeface-quicksand": "0.0.71"
+    "rss-parser": "^3.6.3",
+    "rss-to-json": "^1.0.4",
+    "typeface-quicksand": "0.0.71",
+    "xml-js": "^1.6.11"
   },
   "scripts": {
     "start": "react-scripts start",
