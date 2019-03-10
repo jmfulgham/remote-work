@@ -30,9 +30,9 @@ export default class JobBoard extends Component {
         let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
         let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
         this.setState({jobs: {remoteOkJobs, githubJobs, stackOverflowJobs}});
-        console.log(this.state.jobs.remoteOkJobs);
+        // console.log(this.state.jobs.stackOverflowJobs);
     }
-//add remote ok logo to state
+
     render() {
         return (
             <div style={styles.container}>
