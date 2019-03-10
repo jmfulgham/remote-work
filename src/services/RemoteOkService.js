@@ -20,17 +20,16 @@ export default class RemoteOkService {
     handleRemoteOkJobs(jobs) {
         jobs.shift();
         let jobDetails = jobs.map(job => {
-            let listing = {
-                Date: job.date,
-                Position: job.position,
-                Company: job.company,
-                Focus: job.tags,
-                Apply: job.url,
-                Description: job.description,
+            return {
+                 Date: job.date,
+                 Position: job.position,
+                 Company: job.company,
+                 Focus: job.tags,
+                 Apply: job.url,
+                 Description: job.description,
 
 
-            };
-             return listing;
+             };
         });
         let remoteOkLogoUrl = "https://remoteok.io/assets/jobs/7413913e967dd6b6529234122167acd0.png";
         jobDetails.img = remoteOkLogoUrl;

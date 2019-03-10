@@ -7,10 +7,25 @@ export default class GitHubService {
             method:'get',
             url: 'https://jobs.github.com/positions.json?location=remote'
         }).then((response) => {
-            return response.data;
+           return this.handleGithubJobs(response.data);
         }).catch(e =>{
             return e;
         })
+    }
+
+    handleGithubJobs(data){
+        return data.map(job => {
+            return {
+                Date: job.created_at,
+                Position: job.title,
+                Company: job.company,
+                "Company Website": job.company_url,
+                Source: job.url,
+                Apply: job.how_to_apply,
+                Description: job.description,
+                Logo: job.company_logo
+            };
+        });
     }
 }
 

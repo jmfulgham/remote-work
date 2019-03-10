@@ -16,7 +16,7 @@ export default class StackOverflowService {
     handleStackOverflowFeed(feed) {
         let stackOverflowImg = feed.image.url;
         let jobDetails = feed.items.map(job => {
-            let listing ={
+            let listing = {
                 Date: job.date,
                 Position: job.title,
                 Focus: job.categories,
