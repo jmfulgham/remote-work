@@ -11,7 +11,6 @@ export default class RemoteOkService {
         }).then((response) => {
             let jobs = response.data;
             let handledJobs = this.handleRemoteOkJobs(jobs);
-            console.log("Ok!!!!");
             return handledJobs;
         }).catch(e => {
             return `Remote is not able to respond ${e}`
@@ -22,19 +21,18 @@ export default class RemoteOkService {
         jobs.shift();
         let jobDetails = jobs.map(job => {
             return {
-                 Date: job.date,
-                 Position: job.position,
-                 Company: job.company,
-                 Focus: job.tags,
-                 Apply: job.url,
-                 Description: job.description,
-
-
-             };
+                Date: job.date,
+                Position: job.position,
+                Company: job.company,
+                Focus: job.tags,
+                Apply: job.url,
+                Description: job.description,
+            };
         });
+
         let remoteOkLogoUrl = "https://remoteok.io/assets/jobs/7413913e967dd6b6529234122167acd0.png";
         jobDetails.img = remoteOkLogoUrl;
-       return jobDetails;
+        return jobDetails;
 
     }
 }
