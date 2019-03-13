@@ -19,20 +19,19 @@ app.get('/api/github', (req, res) => {
         method: 'get',
         url: 'https://jobs.github.com/positions.json?location=remote'
     })
-        .then(res => res.data);
+        .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
 app.get('/api/remoteOk', (req, res) => {
     axios({
         method: 'get',
         url: 'https://remoteok.io/api'
-    }).then(res => res.data);
+    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
 app.get('/api/stackOverflow', (req, res) => {
-    console.log("stack request sent");
     axios({
         method: 'get',
         url: 'https://stackoverflow.com/jobs/feed?r=true'
-    }).then(res => console.log(res));
+    }).then(resp => res.send(resp)).catch(e => `Server error, ${e}`);
 });

@@ -11,9 +11,10 @@ export default class RemoteOkService {
         }).then((response) => {
             let jobs = response.data;
             let handledJobs = this.handleRemoteOkJobs(jobs);
+            console.log("Ok!!!!");
             return handledJobs;
         }).catch(e => {
-            return e
+            return `Remote is not able to respond ${e}`
         });
     }
 

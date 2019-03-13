@@ -7,10 +7,11 @@ export default class GitHubService {
             method:'get',
             url: '/api/github'
         }).then((response) => {
+            console.log("Hey girl, I got it");
            return this.handleGithubJobs(response.data);
         }).catch(e =>{
             console.log("NO RUN");
-            return e;
+            return `Please try your GH request again ${e}`;
         })
 
     }

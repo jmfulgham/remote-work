@@ -7,6 +7,7 @@ export default class StackOverflowService {
         return feed.load('/api/stackOverflow')
             .then(res => {
                 let soFeed = this.handleStackOverflowFeed(res);
+                console.log("My cup overfloweth");
                 return soFeed;
             }).catch(e => {
                 return `Stack Overflow has experienced an error ${e}`
