@@ -4,7 +4,7 @@ export default class RemoteOkService {
 
 
     getRemoteOkJobs() {
-        let remoteOkUrl = 'https://remoteok.io/api';
+        let remoteOkUrl = '/api/remoteOk';
         return axios({
             method: 'get',
             url: `${remoteOkUrl}`

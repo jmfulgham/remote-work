@@ -17,7 +17,15 @@ if (process.env.NODE_ENV === "production") {
 
 app.get('/api/github', (req, res) => {
     axios({
-        method:'get',
-        url:'https://jobs.github.com/positions.json?location=remote'})
-        .then(res=> res.data);
+        method: 'get',
+        url: 'https://jobs.github.com/positions.json?location=remote'
+    })
+        .then(res => res.data);
+});
+
+app.get('/api/remoteOk', (req, res) => {
+    axios({
+        method: 'get',
+        url: 'https://remoteok.io/api'
+    }).then(res => res.data);
 });
