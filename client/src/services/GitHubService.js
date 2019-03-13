@@ -5,7 +5,7 @@ export default class GitHubService {
 
         return axios({
             method:'get',
-            url: 'https://jobs.github.com/positions.json?location=remote'
+            url: '/api/github'
         }).then((response) => {
            return this.handleGithubJobs(response.data);
         }).catch(e =>{
