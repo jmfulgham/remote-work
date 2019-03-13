@@ -1,7 +1,7 @@
 const axios = require('axios');
 export default class GitHubService {
 
-     getAllGitHubRemoteJobs(){
+     getAllGitHubRemoteJobs() {
 
         return axios({
             method:'get',
@@ -9,11 +9,13 @@ export default class GitHubService {
         }).then((response) => {
            return this.handleGithubJobs(response.data);
         }).catch(e =>{
+            console.log("NO RUN");
             return e;
         })
+
     }
 
-    handleGithubJobs(data){
+    handleGithubJobs(data) {
         return data.map(job => {
             return {
                 Date: job.created_at,

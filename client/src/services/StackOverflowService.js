@@ -4,7 +4,7 @@ export default class StackOverflowService {
 
     getStackOverflowJobs() {
         const feed = new Feed();
-        return feed.load('https://stackoverflow.com/jobs/feed?r=true')
+        return feed.load('/api/stackOverflow')
             .then(res => {
                 let soFeed = this.handleStackOverflowFeed(res);
                 return soFeed;
