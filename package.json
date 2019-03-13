@@ -1,40 +1,33 @@
 {
   "name": "remote-work",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@material-ui/icons": "^3.0.2",
-    "axios": "^0.18.0",
-    "feed-to-json-promise": "^1.8.0",
-    "material-icons-react": "^1.0.4",
-    "mui-datatables": "2.0.0-beta-41",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5",
-    "rss-parser": "^3.6.3",
-    "rss-to-json": "^1.0.4",
-    "typeface-quicksand": "0.0.71",
-    "xml-js": "^1.6.11"
-  },
+  "version": "1.0.0",
+  "description": "server",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js",
+    "client": "cd client && npm start"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmfulgham/remote-work.git"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "author": "Mone't Fulgham (jaimo.net)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmfulgham/remote-work/issues"
+  },
+  "homepage": "https://github.com/jmfulgham/remote-work#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "express-http-proxy": "^1.5.1",
+    "http-proxy-middleware": "^0.19.1",
+    "nodemon": "^1.18.10"
+  },
   "devDependencies": {
-    "@babel/preset-env": "^7.3.4",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.10.0"
+    "concurrently": "^4.1.0"
   }
 }

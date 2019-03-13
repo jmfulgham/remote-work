@@ -1,19 +1,20 @@
 const axios = require('axios');
 export default class GitHubService {
 
-     getAllGitHubRemoteJobs(){
+     getAllGitHubRemoteJobs() {
 
         return axios({
             method:'get',
-            url: 'https://jobs.github.com/positions.json?location=remote'
+            url: '/api/github'
         }).then((response) => {
            return this.handleGithubJobs(response.data);
         }).catch(e =>{
-            return e;
+            return `Please try your GH request again ${e}`;
         })
+
     }
 
-    handleGithubJobs(data){
+    handleGithubJobs(data) {
         return data.map(job => {
             return {
                 Date: job.created_at,

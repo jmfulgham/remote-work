@@ -1,0 +1,43 @@
+{
+  "name": "remote-work",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:5000/",
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "feed-to-json-promise": "^1.8.0",
+    "material-icons-react": "^1.0.4",
+    "mui-datatables": "2.0.0-beta-41",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5",
+    "rss-parser": "^3.6.3",
+    "rss-to-json": "^1.0.4",
+    "typeface-quicksand": "0.0.71",
+    "xml-js": "^1.6.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0"
+  }
+}
