@@ -9,7 +9,6 @@
     "server": "nodemon server.js",
     "client": "cd client && npm start"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmfulgham/remote-work.git"

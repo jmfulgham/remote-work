@@ -10,8 +10,7 @@ export default class RemoteOkService {
             url: `${remoteOkUrl}`
         }).then((response) => {
             let jobs = response.data;
-            let handledJobs = this.handleRemoteOkJobs(jobs);
-            return handledJobs;
+            return this.handleRemoteOkJobs(jobs);
         }).catch(e => {
             return `Remote is not able to respond ${e}`
         });
@@ -21,6 +20,7 @@ export default class RemoteOkService {
         jobs.shift();
         let jobDetails = jobs.map(job => {
             return {
+                Id: job.id,
                 Date: job.date,
                 Position: job.position,
                 Company: job.company,

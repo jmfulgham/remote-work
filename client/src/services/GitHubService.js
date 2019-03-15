@@ -17,6 +17,7 @@ export default class GitHubService {
     handleGithubJobs(data) {
         return data.map(job => {
             return {
+                Id: job.id,
                 Date: job.created_at,
                 Position: job.title,
                 Company: job.company,
