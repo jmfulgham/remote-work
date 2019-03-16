@@ -10,6 +10,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+const moment = require('moment');
+moment().format("MMM Do YY");
+
 
 const styles = {
     container: {
@@ -63,7 +66,7 @@ export default class JobBoard extends Component {
                                     {jobs.map(job => (
                                         <TableRow key={job.id}>
                                             <TableCell component="th" scope="row">
-                                                {job.Date}
+                                                {moment(job.Date).format("MMM Do YY")}
                                             </TableCell>
                                             <TableCell align="left">{job.Position}</TableCell>
                                             <TableCell align="left">{job.Company}</TableCell>

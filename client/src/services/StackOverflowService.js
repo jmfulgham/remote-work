@@ -16,17 +16,16 @@ export default class StackOverflowService {
     handleStackOverflowFeed(feed) {
         let stackOverflowImg = feed.image.url;
         let jobDetails = feed.items.map(job => {
-            let listing = {
+            return {
                 Date: job.date,
                 Position: job.title,
                 Focus: job.categories,
                 Apply: job.link,
                 Description: job.description,
+                Logo: stackOverflowImg
             };
-            return listing;
         });
 
-        jobDetails.img = stackOverflowImg;
         return jobDetails;
 
     }

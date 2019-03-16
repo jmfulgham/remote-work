@@ -31,7 +31,7 @@ export default class RemoteOkService {
         });
 
         let remoteOkLogoUrl = "https://remoteok.io/assets/jobs/7413913e967dd6b6529234122167acd0.png";
-        jobDetails.img = remoteOkLogoUrl;
+        jobDetails.Logo = remoteOkLogoUrl;
         return jobDetails;
 
     }
