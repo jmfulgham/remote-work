@@ -18,7 +18,7 @@ export default class RemoteOkService {
 
     handleRemoteOkJobs(jobs) {
         jobs.shift();
-        return jobs.map(job => {
+        return jobs.slice(0,50).map(job => {
             return {
                 Id: job.id,
                 Date: job.date,

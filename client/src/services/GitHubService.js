@@ -19,7 +19,7 @@ export default class GitHubService {
     }
 
     handleGithubJobs(data) {
-        return data.map(job => {
+        return data.slice(0,20).map(job => {
             return {
                 Id: job.id,
                 Date: job.created_at,

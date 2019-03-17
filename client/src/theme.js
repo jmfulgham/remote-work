@@ -20,7 +20,7 @@ const theme = createMuiTheme({
     },
 
     typography: {
-        fontFamily: '"Quicksand", "Work Sans", sans-serif'
+        fontFamily: '"Questrial", "Work Sans", sans-serif'
     }
 });
 export default theme;

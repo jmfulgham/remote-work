@@ -18,7 +18,7 @@ import Button from '@material-ui/core/Button';
 const moment = require('moment');
 moment().format("MMM Do YY");
 
-
+require('typeface-questrial');
 const styles = {
     container: {
         padding: '3rem 3rem 3rem 3rem'
