@@ -14,7 +14,7 @@ app.get('/api/github', (req, res) => {
     console.log(`first call made from ${port}`);
     axios({
         method: 'get',
-        url: 'https://jobs.github.com/positions.json?location=remote'
+        url: 'https://jobs.github.com/positions.json?&location=remote&page=1&markdown=true'
     })
         .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });

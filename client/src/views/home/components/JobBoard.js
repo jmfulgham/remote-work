@@ -10,6 +10,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Button from '@material-ui/core/Button';
 const moment = require('moment');
 moment().format("MMM Do YY");
 
@@ -29,14 +34,21 @@ export default class JobBoard extends Component {
         super(props);
         this.state = {
             jobsLoading: true,
-            jobs: []
-        }
+            jobs: [],
+            expanded: false
+        };
         this.remoteOkService = new RemoteOkService();
         this.gitHubService = new GitHubService();
         this.stackOverflowService = new StackOverflowService();
         this.columns = ['Date','Position', 'Company', 'Source', 'Apply'];
     };
 
+
+    handleChange = panel => (event, expanded) => {
+        this.setState({
+            expanded: expanded ? panel : false,
+        });
+    };
 
     async componentDidMount() {
         let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
@@ -48,31 +60,27 @@ export default class JobBoard extends Component {
     };
 
     render() {
+        const { expanded } = this.state;
         let jobs = this.state.jobs;
         return (<div style={styles.container}>
                 {jobs.length === 0 && this.state.jobsLoading === false ? <div>Loading...</div> :
                     <Paper>
                         <Table>
-                            <TableHead>
-                                {this.columns.map(
-                                    column => (
-                                        <TableCell
-                                            align="left"
-                                            padding="default"
-                                        >{column}
-                                        </TableCell>))}
-                            </TableHead>
                             <TableBody>
                                     {jobs.map(job => (
-                                        <TableRow key={job.id}>
-                                            <TableCell component="th" scope="row">
-                                                {moment(job.Date).format("MMM Do YY")}
-                                            </TableCell>
-                                            <TableCell align="left">{job.Position}</TableCell>
-                                            <TableCell align="left">{job.Company}</TableCell>
-                                            <TableCell align="left">{job.Source}</TableCell>
-                                            <TableCell align="left">{job.Apply}</TableCell>
-                                        </TableRow>
+                                        <ExpansionPanel expanded={expanded === job.id} onChange={this.handleChange(job.id)}>
+                                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}> <TableRow key={job.id}>
+                                                <Typography variant="display1">{job.Position}-{job.Company}</Typography><Typography variant="subtitle1">
+                                                {moment(job.Date).format("MMM Do YYYY")}
+                                            </Typography>
+                                            </TableRow>
+                                            </ExpansionPanelSummary>
+                                            <ExpansionPanelDetails>
+                                                <Typography variant='body2'>
+                                                    {job.Description}
+                                                </Typography>
+                                            </ExpansionPanelDetails>
+                                        </ExpansionPanel>
                                         ))}
                             </TableBody>
                             </Table></Paper>
