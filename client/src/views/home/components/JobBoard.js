@@ -4,9 +4,6 @@ import GitHubService from "../../../services/GitHubService";
 import StackOverflowService from "../../../services/StackOverflowService";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
@@ -17,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-
+import Markdown from 'markdown-to-jsx';
 
 const moment = require('moment');
 moment().format("MMM Do YY");
@@ -87,7 +84,7 @@ export default class JobBoard extends Component {
                                             </ExpansionPanelSummary>
                                             <ExpansionPanelDetails>
                                                 <Typography variant='body2'>
-                                                    {job.Description}
+                                                    <Markdown>{job.Description}</Markdown>
                                                 </Typography>
                                             </ExpansionPanelDetails>
                                             <Divider />
