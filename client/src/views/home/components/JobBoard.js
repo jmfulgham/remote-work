@@ -14,17 +14,28 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+
+
 const moment = require('moment');
 moment().format("MMM Do YY");
 
 require('typeface-questrial');
 const styles = {
+
+    arrow: {
+        color: "#27C4A8"
+    },
     container: {
         padding: '3rem 3rem 3rem 3rem'
     },
     header: {
         backgroundColor: '#efcafc'
+    },
+    expand: {
+        padding: '2rem'
     }
 };
 
@@ -56,20 +67,19 @@ export default class JobBoard extends Component {
         // let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
         let jobsList = githubJobs.concat(remoteOkJobs);
         this.setState({jobs: jobsList, jobsLoading: false});
-        // console.log(this.state.jobs)
     };
 
     render() {
         const { expanded } = this.state;
         let jobs = this.state.jobs;
         return (<div style={styles.container}>
-                {jobs.length === 0 && this.state.jobsLoading === false ? <div>Loading...</div> :
+                {jobs.length === 0 && this.state.jobsLoading === true ? <div> <Typography variant="display3">Loading...</Typography></div> :
                     <Paper>
                         <Table>
                             <TableBody>
                                     {jobs.map(job => (
                                         <ExpansionPanel expanded={expanded === job.id} onChange={this.handleChange(job.id)}>
-                                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}> <TableRow key={job.id}>
+                                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>} style={styles.expand}> <TableRow key={job.id}>
                                                 <Typography variant="display1">{job.Position}-{job.Company}</Typography><Typography variant="subtitle1">
                                                 {moment(job.Date).format("MMM Do YYYY")}
                                             </Typography>
@@ -80,6 +90,12 @@ export default class JobBoard extends Component {
                                                     {job.Description}
                                                 </Typography>
                                             </ExpansionPanelDetails>
+                                            <Divider />
+                                            <ExpansionPanelActions>
+                                                <Button size="small" color="secondary" href={job.Apply}>
+                                                    Apply
+                                                </Button>
+                                            </ExpansionPanelActions>
                                         </ExpansionPanel>
                                         ))}
                             </TableBody>
