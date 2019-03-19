@@ -12,7 +12,7 @@ export default class StackOverflowService {
     }
 
     handleStackOverflowFeed(feed) {
-        return feed.items.slice(0, 50).map(job => {
+        return feed.items.slice(0, 40).map(job => {
             return {
                 Id: job.guid,
                 Date: job.isoDate,

@@ -17,6 +17,7 @@ export default class RemoteOkService {
                 Date: job.isoDate,
                 Position: job.title,
                 Apply: job.link,
+                Source: job.link,
                 Description: job.content,
                 Logo: "https://remoteok.io/assets/jobs/7413913e967dd6b6529234122167acd0.png"
             };

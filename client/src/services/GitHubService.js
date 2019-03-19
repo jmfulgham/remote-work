@@ -19,7 +19,8 @@ export default class GitHubService {
     }
 
     handleGithubJobs(data) {
-        return data.slice(0,20).map(job => {
+        return data.slice(0,15).map(job => {
+            console.log(job.url);
             return {
                 Id: job.id,
                 Date: job.created_at,
@@ -27,7 +28,6 @@ export default class GitHubService {
                 Company: job.company,
                 "Company Website": job.company_url,
                 Source: job.url,
-                Apply: job.how_to_apply,
                 Description: job.description,
                 Logo: job.company_logo
             };
