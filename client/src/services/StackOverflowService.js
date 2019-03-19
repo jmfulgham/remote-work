@@ -1,33 +1,28 @@
-const Feed = require('feed-to-json-promise');
+let Parser = require('rss-parser');
+let parser = new Parser();
 
 export default class StackOverflowService {
 
-    getStackOverflowJobs() {
-        const feed = new Feed();
-        return feed.load('/api/stackOverflow')
-            .then(res => {
-                let soFeed = this.handleStackOverflowFeed(res);
-                return soFeed;
-            }).catch(e => {
-                return `Stack Overflow has experienced an error ${e}`
-            });
+    async getStackOverflowJobs() {
+        let soRssUrl = '/api/stackOverflow';
+        let feed = await parser.parseURL(soRssUrl).catch(e => {
+            return `S.O. error, ${e}`
+        });
+        return this.handleStackOverflowFeed(feed);
     }
 
     handleStackOverflowFeed(feed) {
-        let stackOverflowImg = feed.image.url;
-        let jobDetails = feed.items.map(job => {
-            let listing = {
-                Date: job.date,
+        return feed.items.slice(0, 40).map(job => {
+            return {
+                Id: job.guid,
+                Date: job.isoDate,
                 Position: job.title,
+                Company: job.company,
                 Focus: job.categories,
+                Source: job.link,
                 Apply: job.link,
-                Description: job.description,
+                Description: job.content,
             };
-            return listing;
         });
-
-        jobDetails.img = stackOverflowImg;
-        return jobDetails;
-
     }
 }

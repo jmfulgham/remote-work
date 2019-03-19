@@ -1,4 +1,8 @@
 const axios = require('axios');
+
+const moment = require('moment');
+moment().format("MMM Do YY");
+
 export default class GitHubService {
 
      getAllGitHubRemoteJobs() {
@@ -15,14 +19,15 @@ export default class GitHubService {
     }
 
     handleGithubJobs(data) {
-        return data.map(job => {
+        return data.slice(0,15).map(job => {
+            console.log(job.url);
             return {
+                Id: job.id,
                 Date: job.created_at,
                 Position: job.title,
                 Company: job.company,
                 "Company Website": job.company_url,
                 Source: job.url,
-                Apply: job.how_to_apply,
                 Description: job.description,
                 Logo: job.company_logo
             };

@@ -9,7 +9,6 @@
     "server": "nodemon server.js",
     "client": "cd client && npm start"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jmfulgham/remote-work.git"
@@ -24,8 +23,13 @@
     "axios": "^0.18.0",
     "express": "^4.16.4",
     "express-http-proxy": "^1.5.1",
+    "html-react-parser": "^0.6.2",
     "http-proxy-middleware": "^0.19.1",
-    "nodemon": "^1.18.10"
+    "moment": "^2.24.0",
+    "nodemon": "^1.18.10",
+    "rss-parser": "^3.7.0",
+    "typeface-poppins": "0.0.72",
+    "typeface-questrial": "0.0.72"
   },
   "devDependencies": {
     "concurrently": "^4.1.0"

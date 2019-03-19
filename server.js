@@ -14,7 +14,7 @@ app.get('/api/github', (req, res) => {
     console.log(`first call made from ${port}`);
     axios({
         method: 'get',
-        url: 'https://jobs.github.com/positions.json?location=remote'
+        url: 'https://jobs.github.com/positions.json?&location=remote&page=1'
     })
         .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
@@ -26,9 +26,17 @@ app.get('/api/remoteOk', (req, res) => {
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
+
+app.get('/api/remoteOkRss', (req, res) => {
+    axios({
+        method: 'get',
+        url: 'https://remoteok.io/remote-jobs.rss'
+    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
+});
+
 app.get('/api/stackOverflow', (req, res) => {
     axios({
         method: 'get',
         url: 'https://stackoverflow.com/jobs/feed?r=true'
-    }).then(resp => res.send(resp)).catch(e => `Server error, ${e}`);
+    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
