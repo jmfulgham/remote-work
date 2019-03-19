@@ -54,7 +54,7 @@ export default class JobBoard extends Component {
     };
 
 
-    handleChange = panel => (event, expanded) => {
+    handleSelect = panel => (event, expanded) => {
         this.setState({
             expanded: expanded ? panel : false,
         });
@@ -72,27 +72,26 @@ export default class JobBoard extends Component {
         const { expanded } = this.state;
         let jobs = this.state.jobs;
         return (<div style={styles.container}>
-                {jobs.length === 0 && this.state.jobsLoading === true ? <div> <Typography variant="display3">Loading...</Typography></div> :
+                {jobs.length === 0 && this.state.jobsLoading === true ? <div> <Typography variant="display3">Finding Jobs...</Typography></div> :
                     <Paper>
                         <Table>
                             <TableBody>
                                     {jobs.map(job => (
-                                        <ExpansionPanel expanded={expanded === job.id} onChange={this.handleChange(job.id)}>
+                                        <ExpansionPanel expanded={expanded === job.id} onChange={this.handleSelect(job.id)}>
                                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>} style={styles.expand}> <TableRow key={job.id}>
-                                                <Typography variant="display1">{job.Position}-{job.Company}</Typography><Typography variant="subtitle1">
+                                                <Typography variant="display1">{job.Position}  {job.Company}</Typography><Typography variant="subtitle1">
                                                 {moment(job.Date).format("MMM Do YYYY")}
                                             </Typography>
                                             </TableRow>
                                             </ExpansionPanelSummary>
                                             <ExpansionPanelDetails>
                                                 <Typography variant='body2'>
-                                                    {/*<Markdown>{job.Description}</Markdown>*/}
                                                     {parse(`${job.Description}`)}
                                                 </Typography>
                                             </ExpansionPanelDetails>
                                             <Divider />
-                                            <ExpansionPanelActions>
-                                                <Button size="small" color="secondary" href={job.Apply}>
+                                            <ExpansionPanelActions style={{justifyContent: 'flex-start'}}>
+                                                <Button color="secondary" href={job.Apply}>
                                                     Apply
                                                 </Button>
                                             </ExpansionPanelActions>
