@@ -14,10 +14,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-// import Markdown from 'markdown-to-jsx';
 
 const parse = require('html-react-parser');
-//TODO handle github Job formatting separately???
 
 
 const moment = require('moment');
