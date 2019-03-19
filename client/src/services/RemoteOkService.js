@@ -1,32 +1,23 @@
-const axios = require('axios');
-
+let Parser = require('rss-parser');
+let parser = new Parser();
 export default class RemoteOkService {
 
-
-    getRemoteOkJobs() {
-        let remoteOkUrl = '/api/remoteOk';
-        return axios({
-            method: 'get',
-            url: `${remoteOkUrl}`
-        }).then((response) => {
-            let jobs = response.data;
-            return this.handleRemoteOkJobs(jobs);
-        }).catch(e => {
-            return `Remote is not able to respond ${e}`
-        });
+   async getRemoteOkJobs() {
+        let remoteOkUrl = '/api/remoteOkRss';
+        let feed = await parser.parseURL(remoteOkUrl).catch(e =>{
+        return `Remote error, ${e}`});
+        return this.handleRemoteOkJobs(feed.items);
     }
 
+
     handleRemoteOkJobs(jobs) {
-        jobs.shift();
         return jobs.slice(0,50).map(job => {
             return {
-                Id: job.id,
-                Date: job.date,
-                Position: job.position,
-                Company: job.company,
-                Focus: job.tags,
-                Apply: job.url,
-                Description: job.description,
+                Id: job.guid,
+                Date: job.isoDate,
+                Position: job.title,
+                Apply: job.link,
+                Description: job.content,
                 Logo: "https://remoteok.io/assets/jobs/7413913e967dd6b6529234122167acd0.png"
             };
         });
