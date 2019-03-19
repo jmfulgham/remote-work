@@ -61,7 +61,6 @@ export default class JobBoard extends Component {
     };
 
     render() {
-        const {expanded} = this.state;
         let jobs = this.state.jobs;
         return (<div style={styles.container}>
                 {jobs.length === 0 && this.state.jobsLoading === true ?
