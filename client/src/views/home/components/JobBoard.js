@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-// import Markdown from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx';
 
 
 //TODO handle github Job formatting separately???
@@ -65,8 +65,8 @@ export default class JobBoard extends Component {
     async componentDidMount() {
         let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
         let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
-        // let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
-        let jobsList = githubJobs.concat(remoteOkJobs);
+        let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
+        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs);
         this.setState({jobs: jobsList, jobsLoading: false});
     };
 
