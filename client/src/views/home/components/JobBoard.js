@@ -14,9 +14,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import Markdown from 'markdown-to-jsx';
+// import Markdown from 'markdown-to-jsx';
 
-
+const parse = require('html-react-parser');
 //TODO handle github Job formatting separately???
 
 
@@ -89,7 +89,7 @@ export default class JobBoard extends Component {
                                             <ExpansionPanelDetails>
                                                 <Typography variant='body2'>
                                                     {/*<Markdown>{job.Description}</Markdown>*/}
-                                                    {job.Description}
+                                                    {parse(`${job.Description}`)}
                                                 </Typography>
                                             </ExpansionPanelDetails>
                                             <Divider />
