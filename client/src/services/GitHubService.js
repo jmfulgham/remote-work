@@ -6,10 +6,10 @@ moment().format("MMM Do YY");
 export default class GitHubService {
 
      getAllGitHubRemoteJobs() {
-
+        let url = '/api/github';
         return axios({
             method:'get',
-            url: '/api/github'
+            url: url
         }).then((response) => {
            return this.handleGithubJobs(response.data);
         }).catch(e =>{
@@ -20,7 +20,6 @@ export default class GitHubService {
 
     handleGithubJobs(data) {
         return data.slice(0,15).map(job => {
-            console.log(job.url);
             return {
                 Id: job.id,
                 Date: job.created_at,
