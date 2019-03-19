@@ -5,14 +5,16 @@ import JobBoard from './JobBoard'
 const styles = {
     parent: {
         display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
     }
 };
 
 export default class Home extends Component {
     render() {
         return (
-            <div className="parentContainer">
-                <div className="body" style={styles.parent}>
+            <div className="parentContainer" style={styles.parent}>
+                <div className="body" >
                     <Header/>
                 </div>
                 <div className="search">
