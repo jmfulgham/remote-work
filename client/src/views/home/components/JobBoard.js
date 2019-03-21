@@ -86,7 +86,7 @@ export default class JobBoard extends Component {
 
         return (<div style={styles.container}>
                 {jobs.length === 0 && this.state.jobsLoading === true ?
-                    <div><Typography variant="display3">Finding Jobs...</Typography></div> :
+                    <div><Typography variant="h2">Finding Jobs...</Typography></div> :
                     <Paper>
                         <Table>
                             <TableBody>
@@ -111,7 +111,7 @@ export default class JobBoard extends Component {
 
                                         </ExpansionPanelActions>
                                         <ExpansionPanelDetails>
-                                            <Typography variant='body2'>
+                                            <Typography variant='body1'>
                                                 {parse(`${job.Description}`)}
                                             </Typography>
                                         </ExpansionPanelDetails>
