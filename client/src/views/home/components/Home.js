@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Search from './Search'
 import JobBoard from './JobBoard'
+
 const styles = {
     parent: {
         display: 'flex',
@@ -11,17 +12,28 @@ const styles = {
 };
 
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: ''
+        }
+    }
+
+    handleSearch = input => {
+        this.setState({searchTerm: input});
+    };
+
     render() {
         return (
             <div className="parentContainer" style={styles.parent}>
-                <div className="body" >
+                <div className="body">
                     <Header/>
                 </div>
                 <div className="search">
-                    <Search/>
+                    <Search searchTerm={this.handleSearch}/>
                 </div>
                 <div className="job-board">
-                    <JobBoard />
+                    <JobBoard search={this.state.searchTerm}/>
                 </div>
             </div>
         )
