@@ -33,7 +33,9 @@ const styles = {
         backgroundColor: '#efcafc'
     },
     expand: {
-        padding: '2rem'
+        padding: '0px 2rem 4rem',
+        height: '14.25rem',
+        alignContent: 'center',
     }
 };
 
@@ -70,14 +72,14 @@ export default class JobBoard extends Component {
                 searchJob.push(job);
             }
         });
-      return searchJob;
+        return searchJob;
     };
 
     render() {
         let jobs;
-        if(this.props.search){
+        if (this.props.search) {
             jobs = this.handleSearch();
-        }else {
+        } else {
             jobs = this.state.jobs;
         }
 
@@ -88,42 +90,42 @@ export default class JobBoard extends Component {
                     <Paper>
                         <Table>
                             <TableBody>
-                                { jobs.map(job => (
-                            <ExpansionPanel>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}
-                                                       style={styles.expand}> <TableRow key={job.id}>
-                                    <Typography
-                                        variant="h3">{job.Position} {job.Company}</Typography><Typography
-                                    variant="subtitle1">
-                                    {moment(job.Date).format("MMM Do YYYY")}
-                                </Typography>
-                                </TableRow>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelActions
-                                    style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
+                                {jobs.map(job => (
+                                    <ExpansionPanel>
+                                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}
+                                                               style={styles.expand}> <TableRow key={job.id}>
+                                            <Typography
+                                                variant="h3">{job.Position} {job.Company}</Typography><Typography
+                                            variant="subtitle1">
+                                            {moment(job.Date).format("MMM Do YYYY")}
+                                        </Typography>
+                                        </TableRow>
+                                        </ExpansionPanelSummary>
+                                        <Divider/>
+                                        <ExpansionPanelActions
+                                            style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
-                                    <Button color="secondary" variant="contained" href={job.Source}
-                                            target="_blank">
-                                        Apply</Button>
+                                            <Button color="secondary" variant="contained" href={job.Source}
+                                                    target="_blank">
+                                                Apply</Button>
 
-                                </ExpansionPanelActions>
-                                <Divider/>
-                                <ExpansionPanelDetails>
-                                    <Typography variant='body2'>
-                                        {parse(`${job.Description}`)}
-                                    </Typography>
-                                </ExpansionPanelDetails>
-                                <Divider/>
-                                <ExpansionPanelActions
-                                    style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
+                                        </ExpansionPanelActions>
+                                        <ExpansionPanelDetails>
+                                            <Typography variant='body2'>
+                                                {parse(`${job.Description}`)}
+                                            </Typography>
+                                        </ExpansionPanelDetails>
+                                        <Divider/>
+                                        <ExpansionPanelActions
+                                            style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
-                                    <Button color="secondary" variant="contained" href={job.Source}
-                                            target="_blank">
-                                        Apply</Button>
+                                            <Button color="secondary" variant="contained" href={job.Source}
+                                                    target="_blank">
+                                                Apply</Button>
 
-                                </ExpansionPanelActions>
-                            </ExpansionPanel>
-                        ))
+                                        </ExpansionPanelActions>
+                                    </ExpansionPanel>
+                                ))
                                 }
 
 

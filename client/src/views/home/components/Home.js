@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Header from './Header';
-import Search from './Search'
+import SearchBar from './SearchBar'
 import JobBoard from './JobBoard'
 
 const styles = {
@@ -30,7 +30,7 @@ export default class Home extends Component {
                     <Header/>
                 </div>
                 <div className="search">
-                    <Search searchTerm={this.handleSearch}/>
+                    <SearchBar searchTerm={this.handleSearch}/>
                 </div>
                 <div className="job-board">
                     <JobBoard search={this.state.searchTerm}/>
