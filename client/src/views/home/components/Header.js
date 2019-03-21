@@ -19,6 +19,7 @@ export default class Header extends Component {
                     <AppBar elevation="1">
                         <Toolbar>
                             <Typography variant="display1" color="secondary">remoteWork(tech)</Typography>
+                            <Typography variant="subtitle1" style={{color:"#27C4A8"}}>beta</Typography>
                             <div style={styles.social}><MaterialIcon icon="email" color='#27C4A8'/></div>
                         </Toolbar>
                     </AppBar>
