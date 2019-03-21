@@ -26,13 +26,12 @@ const styles = {
 };
 
 export default class SearchBar extends Component {
-    constructor(props) {
-        super(props);
-    }
 
 
     handleChange = event => {
-        this.props.searchTerm(event.target.value);
+        let input = event.target.value.toString();
+        let validatedInput = input.replace(/[^\w\s]/gi, '');
+        this.props.searchTerm(validatedInput);
     };
 
 
@@ -48,7 +47,7 @@ render()
                     style={styles.textField}
                     className="search" placeholder="Search Jobs"
                     onBlur={this.handleChange}/>
-                <IconButton color="secondary" disableRipple="true"> <Search/></IconButton>
+                <IconButton color="secondary" disableRipple={true}> <Search/></IconButton>
             </div>
         </div>
     )
