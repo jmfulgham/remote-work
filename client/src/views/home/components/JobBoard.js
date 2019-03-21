@@ -33,7 +33,9 @@ const styles = {
         backgroundColor: '#efcafc'
     },
     expand: {
-        padding: '2rem'
+        padding: '0px 2rem 4rem',
+        height: '14.25rem',
+        alignContent: 'center',
     }
 };
 
@@ -44,7 +46,8 @@ export default class JobBoard extends Component {
         this.state = {
             jobsLoading: true,
             jobs: [],
-            expanded: false
+            expanded: false,
+
         };
         this.remoteOkService = new RemoteOkService();
         this.gitHubService = new GitHubService();
@@ -60,8 +63,27 @@ export default class JobBoard extends Component {
         this.setState({jobs: jobsList, jobsLoading: false});
     };
 
+
+    handleSearch = () => {
+        let searchJob = [];
+        let search = this.props.search.toLowerCase();
+        this.state.jobs.forEach(job => {
+            if (job.Position.toLowerCase().includes(search)) {
+                searchJob.push(job);
+            }
+        });
+        return searchJob;
+    };
+
     render() {
-        let jobs = this.state.jobs;
+        let jobs;
+        if (this.props.search) {
+            jobs = this.handleSearch();
+        } else {
+            jobs = this.state.jobs;
+        }
+
+
         return (<div style={styles.container}>
                 {jobs.length === 0 && this.state.jobsLoading === true ?
                     <div><Typography variant="display3">Finding Jobs...</Typography></div> :
@@ -79,6 +101,7 @@ export default class JobBoard extends Component {
                                         </Typography>
                                         </TableRow>
                                         </ExpansionPanelSummary>
+                                        <Divider/>
                                         <ExpansionPanelActions
                                             style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
@@ -87,7 +110,6 @@ export default class JobBoard extends Component {
                                                 Apply</Button>
 
                                         </ExpansionPanelActions>
-                                        <Divider/>
                                         <ExpansionPanelDetails>
                                             <Typography variant='body2'>
                                                 {parse(`${job.Description}`)}
@@ -103,7 +125,10 @@ export default class JobBoard extends Component {
 
                                         </ExpansionPanelActions>
                                     </ExpansionPanel>
-                                ))}
+                                ))
+                                }
+
+
                             </TableBody>
                         </Table></Paper>
 

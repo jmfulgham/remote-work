@@ -4,7 +4,7 @@
   "description": "server",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "snyk test",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server.js",
     "client": "cd client && npm start"
@@ -32,6 +32,7 @@
     "typeface-questrial": "0.0.72"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "snyk": "^1.140.0"
   }
 }
