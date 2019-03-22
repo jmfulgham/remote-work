@@ -45,6 +45,7 @@ export default class Home extends Component {
                     </Grid>
                 </Grid>
             </div>
+
         )
     }
 };

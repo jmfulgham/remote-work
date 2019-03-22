@@ -2,11 +2,7 @@ import React, {Component} from 'react';
 import RemoteOkService from '../../../services/RemoteOkService';
 import GitHubService from "../../../services/GitHubService";
 import StackOverflowService from "../../../services/StackOverflowService";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
 import Typography from '@material-ui/core/Typography';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -14,6 +10,11 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import TableBody from "@material-ui/core/TableBody";
+import Table from "@material-ui/core/Table";
+import Paper from "@material-ui/core/Paper";
+import TableRow from "@material-ui/core/TableRow";
 
 const parse = require('html-react-parser');
 
@@ -26,16 +27,12 @@ const styles = {
     arrow: {
         color: "#27C4A8"
     },
-    container: {
-        padding: '3rem 3rem 3rem 3rem'
-    },
     header: {
         backgroundColor: '#efcafc'
     },
-    expand: {
-        padding: '0px 2rem 4rem',
-        height: '14.25rem',
-        alignContent: 'center',
+    date: {
+        display: 'inline-flex',
+        alignItems: 'center'
     }
 };
 
@@ -84,56 +81,57 @@ export default class JobBoard extends Component {
         }
 
 
-        return (<div style={styles.container}>
-                {jobs.length === 0 && this.state.jobsLoading === true ?
-                    <div><Typography variant="h2">Finding Jobs...</Typography></div> :
-                    <Paper>
-                        <Table>
-                            <TableBody>
-                                {jobs.map(job => (
-                                    <ExpansionPanel>
-                                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}
-                                                               style={styles.expand}> <TableRow key={job.id}>
-                                            <Typography
-                                                variant="h3">{job.Position} {job.Company}</Typography><Typography
-                                            variant="subtitle1">
-                                            {moment(job.Date).format("MMM Do YYYY")}
-                                        </Typography>
-                                        </TableRow>
-                                        </ExpansionPanelSummary>
-                                        <Divider/>
-                                        <ExpansionPanelActions
-                                            style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
+        return (<div className="job-container">
+            {jobs.length === 0 && this.state.jobsLoading === true ?
+                <div><Typography variant="h2">Finding Jobs...</Typography></div> :
+                    <Table>
+                        <TableBody>
+                            {jobs.map(job => (
+                                <Grid container spacing={24} direction="column">
+                                    <Grid item xs={12} direction={"row"} justify={"space-around"}>
+                                        <ExpansionPanel>
+                                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
+                                           <Grid item> <TableRow key={job.id}>
+                                                <Typography
+                                                    variant="h4">{job.Position} {job.Company}</Typography>
+                                                <Typography
+                                                    variant="subtitle1"
+                                                    style={styles.date}>
+                                                    {moment(job.Date).format("MMM Do")}
+                                                </Typography></TableRow></Grid>
+                                            </ExpansionPanelSummary>
+                                            <Divider/>
+                                            <ExpansionPanelActions
+                                                style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
-                                            <Button color="secondary" variant="contained" href={job.Source}
-                                                    target="_blank">
-                                                Apply</Button>
+                                                <Button color="secondary" variant="contained" href={job.Source}
+                                                        target="_blank">
+                                                    Apply</Button>
 
-                                        </ExpansionPanelActions>
-                                        <ExpansionPanelDetails>
-                                            <Typography variant='body1'>
-                                                {parse(`${job.Description}`)}
-                                            </Typography>
-                                        </ExpansionPanelDetails>
-                                        <Divider/>
-                                        <ExpansionPanelActions
-                                            style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
+                                            </ExpansionPanelActions>
+                                            <ExpansionPanelDetails>
+                                                <Typography variant='body1'>
+                                                    {parse(`${job.Description}`)}
+                                                </Typography>
+                                            </ExpansionPanelDetails>
+                                            <Divider/>
+                                            <ExpansionPanelActions
+                                                style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
-                                            <Button color="secondary" variant="contained" href={job.Source}
-                                                    target="_blank">
-                                                Apply</Button>
+                                                <Button color="secondary" variant="contained" href={job.Source}
+                                                        target="_blank">
+                                                    Apply</Button>
 
-                                        </ExpansionPanelActions>
-                                    </ExpansionPanel>
-                                ))
-                                }
+                                            </ExpansionPanelActions>
+                                        </ExpansionPanel></Grid>
+                                </Grid>
+                            ))
+                            }</TableBody></Table>
 
 
-                            </TableBody>
-                        </Table></Paper>
 
-                }
-            </div>
-        )
-    }
-}
+                        }
+                    </div>
+                    )
+                    }
+                    }
