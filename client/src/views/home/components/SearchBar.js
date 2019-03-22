@@ -43,7 +43,7 @@ render()
             <div style={styles.search}>
                 <TextField
 
-                    inputProps={{'aria-label': 'SearchBar', style: {fontSize: '5.25rem'}}}
+                    inputProps={{'aria-label': 'SearchBar', style: {fontSize: '5.25rem', lineHeight: 'normal'}}}
                     style={styles.textField}
                     className="search" placeholder="Search Jobs"
                     onBlur={this.handleChange}/>
