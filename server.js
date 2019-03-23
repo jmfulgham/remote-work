@@ -15,8 +15,6 @@ if (process.env.NODE_ENV === "production") {
     })
 }
 
-
-
 app.get('/api/github', (req, res) => {
     console.log(`first call made from ${port}`);
     axios({
