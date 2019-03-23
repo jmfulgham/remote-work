@@ -7,7 +7,8 @@
     "test": "snyk test",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server.js",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
