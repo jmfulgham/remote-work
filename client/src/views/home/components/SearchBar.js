@@ -6,17 +6,12 @@ import TextField from '@material-ui/core/TextField';
 const styles = {
     parent: {
         display: 'flex',
-        alignItems: 'space-around'
     },
     search: {
-        display: 'flex',
         paddingTop: '6rem'
     },
     textField: {
-        display: 'flex',
-        flexDirection: 'column',
-        margin: 'auto',
-        width: '30rem'
+        maxWidth: '30rem',
     },
     iconHover: {
         '&:hover': {
@@ -35,21 +30,28 @@ export default class SearchBar extends Component {
     };
 
 
+    render() {
+        return (
+            <div style={styles.parent}>
+                <div style={styles.search}>
+                    <TextField
+                        InputProps={{
+                            endAdornment: <IconButton color="secondary" disableRipple={true}>
+                                <Search/>
+                            </IconButton>,
+                            'aria-label': 'SearchBar',
+                            style: {
+                                fontSize: '2.25rem',
+                                lineHeight: 'normal'
+                            }
+                        }}
+                        className="search" placeholder="Search"
+                        onChange={this.handleChange}>
 
-render()
-{
-    return (
-        <div style={styles.parent}>
-            <div style={styles.search}>
-                <TextField
+                    </TextField>
 
-                    inputProps={{'aria-label': 'SearchBar', style: {fontSize: '5.25rem', lineHeight: 'normal'}}}
-                    style={styles.textField}
-                    className="search" placeholder="Search Jobs"
-                    onBlur={this.handleChange}/>
-                <IconButton color="secondary" disableRipple={true}> <Search/></IconButton>
+                </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
 }
