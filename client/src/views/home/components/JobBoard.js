@@ -80,55 +80,58 @@ export default class JobBoard extends Component {
 
         return (<div className="job-container">
             {jobs.length === 0 && this.state.jobsLoading === true ?
-                <div><Typography variant="h2">Finding Jobs...</Typography></div> :
-                    <Table>
-                        <TableBody>
-                            {jobs.map(job => (
-                                <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
-                                    <Grid item xs={8} direction={"row"} justify={"space-around"}>
-                                        <ExpansionPanel>
-                                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
-                                           <Grid item> <TableRow key={job.id}>
-                                                <Typography
-                                                    variant="h4">{job.Position} {job.Company}</Typography>
-                                                <Typography
-                                                    variant="subtitle1"
-                                                    style={styles.date}>
-                                                    {moment(job.Date).format("MMM Do")}
-                                                </Typography></TableRow></Grid>
-                                            </ExpansionPanelSummary>
-                                            <Divider/>
-                                            <ExpansionPanelActions
-                                                style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
+                <div>
+                    <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
+                        <Grid item xs={8} direction={"row"} justify={"space-around"}><Typography variant="h2">Finding
+                            Jobs...</Typography></Grid></Grid></div>:
+                <Table>
+                <TableBody>
+                {jobs.map(job => (
+                    <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
+                        <Grid item xs={8} direction={"row"} justify={"space-around"}>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
+                                    <Grid item> <TableRow key={job.id}>
+                                        <Typography
+                                            variant="h4">{job.Position} {job.Company}</Typography>
+                                        <Typography
+                                            variant="subtitle1"
+                                            style={styles.date}>
+                                            {moment(job.Date).format("MMM Do")}
+                                        </Typography></TableRow></Grid>
+                                </ExpansionPanelSummary>
+                                <Divider/>
+                                <ExpansionPanelActions
+                                    style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
-                                                <Button color="secondary" variant="contained" href={job.Source}
-                                                        target="_blank">
-                                                    Apply</Button>
+                                    <Button color="secondary" variant="contained" href={job.Source}
+                                            target="_blank">
+                                        Apply</Button>
 
-                                            </ExpansionPanelActions>
-                                            <ExpansionPanelDetails>
-                                                <Typography variant='body1'>
-                                                    {parse(`${job.Description}`)}
-                                                </Typography>
-                                            </ExpansionPanelDetails>
-                                            <Divider/>
-                                            <ExpansionPanelActions
-                                                style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
+                                </ExpansionPanelActions>
+                                <ExpansionPanelDetails>
+                                    <Typography variant='body1'>
+                                        {parse(`${job.Description}`)}
+                                    </Typography>
+                                </ExpansionPanelDetails>
+                                <Divider/>
+                                <ExpansionPanelActions
+                                    style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
-                                                <Button color="secondary" variant="contained" href={job.Source}
-                                                        target="_blank">
-                                                    Apply</Button>
+                                    <Button color="secondary" variant="contained" href={job.Source}
+                                            target="_blank">
+                                        Apply</Button>
 
-                                            </ExpansionPanelActions>
-                                        </ExpansionPanel></Grid>
-                                </Grid>
-                            ))
-                            }</TableBody></Table>
+                                </ExpansionPanelActions>
+                            </ExpansionPanel></Grid>
+                    </Grid>
+                ))
+                }</TableBody></Table>
 
 
 
-                        }
-                    </div>
-                    )
-                    }
-                    }
+                }
+                </div>
+                )
+                }
+                }

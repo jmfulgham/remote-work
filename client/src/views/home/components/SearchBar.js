@@ -12,7 +12,6 @@ const styles = {
     },
     textField: {
         maxWidth: '30rem',
-        textAlign: 'center'
     },
     iconHover: {
         '&:hover': {
@@ -36,13 +35,21 @@ export default class SearchBar extends Component {
             <div style={styles.parent}>
                 <div style={styles.search}>
                     <TextField
-                        inputProps={{'aria-label': 'SearchBar', style: {fontSize: '5.25rem', lineHeight: 'normal'}}}
+                        InputProps={{
+                            endAdornment: <IconButton color="secondary" disableRipple={true}>
+                                <Search/>
+                            </IconButton>,
+                            'aria-label': 'SearchBar',
+                            style: {
+                                fontSize: '2.25rem',
+                                lineHeight: 'normal'
+                            }
+                        }}
                         className="search" placeholder="Search"
-                        onBlur={this.handleChange}>
-                        <IconButton color="secondary" disableRipple={true}>
-                            <Search/>
-                        </IconButton>
+                        onChange={this.handleChange}>
+
                     </TextField>
+
                 </div>
             </div>
         )

@@ -36,7 +36,7 @@ export default class Home extends Component {
 
                 <Grid container spacing={24} direction="column"
                       alignItems="center">
-                    <Grid item xs={4} sm={8} justify="center"
+                    <Grid item xs={8} sm={12} justify="center"
                           alignItems="space-around">
                         <SearchBar searchTerm={this.handleSearch}/>
                     </Grid>
