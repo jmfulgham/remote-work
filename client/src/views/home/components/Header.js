@@ -17,11 +17,13 @@ const styles = {
 export default class Header extends Component {
     render() {
         return (<div>
-                    <AppBar elevation={1}>
+                    <AppBar elevation={1} >
                         <Toolbar>
                             <Typography variant="display1" color="secondary">remoteWork(tech)</Typography>
                             <Typography variant="subtitle1" style={{color:"#27C4A8"}}>beta</Typography>
-                            <div style={styles.social}><Typography variant="body1" color="secondary">Get In Contact  </Typography> <a href="mailto:mo@jaimo.net?subject=Hey! I love remoteWork.tech!"><MaterialIcon icon="email" color='#27C4A8'/></a></div>
+                            <div style={styles.social}>
+                                <a href="mailto:mo@jaimo.net?subject=Hey! I love remoteWork.tech!"><MaterialIcon icon="email" color='#27C4A8' aria-label="Email"/></a>
+                            </div>
                         </Toolbar>
                     </AppBar>
             </div>
