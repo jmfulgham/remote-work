@@ -27,9 +27,6 @@ const styles = {
     arrow: {
         color: "#27C4A8"
     },
-    header: {
-        backgroundColor: '#efcafc'
-    },
     date: {
         display: 'inline-flex',
         alignItems: 'center'
@@ -87,8 +84,8 @@ export default class JobBoard extends Component {
                     <Table>
                         <TableBody>
                             {jobs.map(job => (
-                                <Grid container spacing={24} direction="column">
-                                    <Grid item xs={12} direction={"row"} justify={"space-around"}>
+                                <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
+                                    <Grid item xs={8} direction={"row"} justify={"space-around"}>
                                         <ExpansionPanel>
                                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
                                            <Grid item> <TableRow key={job.id}>

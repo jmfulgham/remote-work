@@ -33,16 +33,14 @@ export default class Home extends Component {
                         <Header/>
                     </Grid>
                 </Grid>
+
                 <Grid container spacing={24} direction="column"
                       alignItems="center">
-                    <Grid item xs={12} justify="center"
+                    <Grid item xs={4} sm={8} justify="center"
                           alignItems="space-around">
                         <SearchBar searchTerm={this.handleSearch}/>
                     </Grid>
-                    <Grid item xs={10}
-                          alignItems="center">
                         <JobBoard search={this.state.searchTerm}/>
-                    </Grid>
                 </Grid>
             </div>
 
