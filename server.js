@@ -33,13 +33,17 @@ app.use((req, res, next) => {
     });
 });
 
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
 app.use(express.static(path.join(__dirname, 'client/build')));
+
+
 app.get('/', (req, res) => {
     res.render('index', {styleNonce: res.locals.styleNonce})
-})
+});
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));

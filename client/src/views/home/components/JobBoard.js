@@ -78,6 +78,7 @@ export default class JobBoard extends Component {
 
 
         return (<div className="job-container">
+
             {jobs.length === 0 && this.state.jobsLoading === true ?
                 <div>
                     <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
