@@ -32,7 +32,7 @@
     "nodemon": "^1.18.10",
     "rss-parser": "^3.7.0",
     "typeface-poppins": "0.0.72",
-    "typeface-questrial": "0.0.72",
+    "typeface-questrial": "0.0.72"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
