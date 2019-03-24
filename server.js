@@ -17,11 +17,8 @@ app.use((req, res, next) => {
         directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'",],
-            imgSrc: ['self'],
             fontSrc: ["'self'", 'https://fonts.google.com/'],
             styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.styleNonce}'`],
-            connectSrc: ['self'],
-            formAction: ['self'],
             sandbox: ['allow-forms', 'allow-scripts'],
             reportUri: '/report-violation',
             objectSrc: ["'self'"],
