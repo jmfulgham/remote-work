@@ -4,7 +4,29 @@ const port = process.env.PORT || 5000;
 const axios = require('axios');
 const path = require('path');
 const helmet = require('helmet');
+const csp = require('helmet-csp');
+
+
 app.use(helmet());
+
+app.use(csp({
+    // https://github.com/helmetjs/csp for more information about setting this up
+    directives: {
+        defaultSrc: ["'self'", 'remotework.tech'],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        fontSrc: ["'self'", 'https://fonts.google.com/'],
+        sandbox: ['allow-forms', 'allow-scripts'],
+        reportUri: '/report-violation',
+        objectSrc: ["'self'"],
+        upgradeInsecureRequests: true,
+        workerSrc: false  // This is not set.
+    },
+    loose: false,
+    reportOnly: false,
+    setAllHeaders: false,
+    disableAndroid: false,
+    browserSniff: true
+}));
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.static(path.join(__dirname, 'client/build')));
