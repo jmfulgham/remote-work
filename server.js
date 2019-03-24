@@ -16,9 +16,11 @@ app.use((req, res, next) => {
     helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", "'unsafe-inline'"],
+            scriptSrc: ["'self'",],
             fontSrc: ["'self'", 'https://fonts.google.com/'],
             styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.styleNonce}'`],
+            connectSrc: ['self'],
+            formAction: ['self'],
             sandbox: ['allow-forms', 'allow-scripts'],
             reportUri: '/report-violation',
             objectSrc: ["'self'"],
