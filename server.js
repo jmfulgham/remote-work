@@ -22,7 +22,6 @@ app.get('/api/github', (req, res) => {
     axios({
         method: 'get',
         url: 'https://jobs.github.com/positions.json?&location=remote&page=1',
-        "x-frame-options": "SAMEORIGIN"
     })
         .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
@@ -31,8 +30,6 @@ app.get('/api/remoteOk', (req, res) => {
     axios({
         method: 'get',
         url: 'https://remoteok.io/api',
-        "x-frame-options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block"
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
@@ -41,7 +38,6 @@ app.get('/api/remoteOkRss', (req, res) => {
     axios({
         method: 'get',
         url: 'https://remoteok.io/remote-jobs.rss',
-        "x-frame-options": "SAMEORIGIN"
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
@@ -49,6 +45,5 @@ app.get('/api/stackOverflow', (req, res) => {
     axios({
         method: 'get',
         url: 'https://stackoverflow.com/jobs/feed?r=true',
-        "x-frame-options": "SAMEORIGIN"
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
