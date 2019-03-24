@@ -4,15 +4,6 @@ import SearchBar from './SearchBar'
 import JobBoard from './JobBoard'
 import Grid from '@material-ui/core/Grid';
 
-
-const styles = {
-    parent: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-    }
-};
-
 export default class Home extends Component {
     constructor(props) {
         super(props);
