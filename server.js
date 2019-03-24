@@ -12,9 +12,10 @@ app.use(helmet());
 app.use(csp({
     // https://github.com/helmetjs/csp for more information about setting this up
     directives: {
-        defaultSrc: ["'self'", 'remotework.tech'],
+        defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "'unsafe-inline'"],
         fontSrc: ["'self'", 'https://fonts.google.com/'],
+        styleSrc: ['self'],
         sandbox: ['allow-forms', 'allow-scripts'],
         reportUri: '/report-violation',
         objectSrc: ["'self'"],
