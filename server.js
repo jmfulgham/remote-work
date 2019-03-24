@@ -11,11 +11,9 @@ const nonce = new Buffer.from(uuidv4()).toString('base64');
 
 app.use(helmet());
 app.use((req, res, next) => {
-    // nonce should be base64 encoded
     res.locals.styleNonce = Buffer.from(uuidv4()).toString('base64');
     next();
     helmet.contentSecurityPolicy({
-        // https://github.com/helmetjs/csp for more information about setting this up
         directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'", "'unsafe-inline'"],
