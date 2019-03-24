@@ -11,11 +11,8 @@ const nonce = new Buffer.from(uuidv4()).toString('base64');
 
 app.use(helmet());
 app.use((req, res, next) => {
-    res.locals.styleNonce = Buffer(uuidv4()).toString('base64');
+    res.locals.styleNonce = Buffer.from(uuidv4()).toString('base64');
     next();
-});
-
-app.use(
     helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: ["'self'"],
@@ -26,15 +23,15 @@ app.use(
             reportUri: '/report-violation',
             objectSrc: ["'self'"],
             upgradeInsecureRequests: true,
-            workerSrc: false  // This is not set.
+            workerSrc: false
         },
         loose: false,
         reportOnly: false,
         setAllHeaders: false,
         disableAndroid: false,
         browserSniff: false
-    }));
-
+    });
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -42,7 +39,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('/', (req, res) => {
     res.render('index', {styleNonce: res.locals.styleNonce})
-});
+})
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
