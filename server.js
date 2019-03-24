@@ -29,7 +29,7 @@ app.use((req, res, next) => {
         reportOnly: false,
         setAllHeaders: false,
         disableAndroid: false,
-        browserSniff: false
+        browserSniff: true
     });
 });
 
