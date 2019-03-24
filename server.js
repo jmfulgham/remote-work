@@ -3,6 +3,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const axios = require('axios');
 const path = require('path');
+const helmet = require('helmet');
+app.use(helmet());
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.static(path.join(__dirname, 'client/build')));

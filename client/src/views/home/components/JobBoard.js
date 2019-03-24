@@ -13,7 +13,6 @@ import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import TableBody from "@material-ui/core/TableBody";
 import Table from "@material-ui/core/Table";
-import Paper from "@material-ui/core/Paper";
 import TableRow from "@material-ui/core/TableRow";
 
 const parse = require('html-react-parser');
