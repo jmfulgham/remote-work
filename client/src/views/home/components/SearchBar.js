@@ -39,13 +39,15 @@ export default class SearchBar extends Component {
                             endAdornment: <IconButton color="secondary" disableRipple={true}>
                                 <Search/>
                             </IconButton>,
-                            'aria-label': 'SearchBar',
                             style: {
                                 fontSize: '2.25rem',
                                 lineHeight: 'normal'
                             }
                         }}
-                        className="search" placeholder="Search"
+                        className="search"
+                        label="Search"
+                        aria-describedby="search-for-jobs"
+                        helperText="Search by job title here"
                         onChange={this.handleChange}>
 
                     </TextField>
