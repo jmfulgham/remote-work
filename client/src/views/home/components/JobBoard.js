@@ -105,7 +105,7 @@ export default class JobBoard extends Component {
                                     style={{justifyContent: 'flex-start', paddingLeft: '1.5rem'}}>
 
                                     <Button color="secondary" variant="contained" href={job.Source}
-                                            target="_blank">
+                                            target="_blank" role="button" aria-pressed="false">
                                         Apply</Button>
 
                                 </ExpansionPanelActions>

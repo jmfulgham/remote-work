@@ -8,7 +8,7 @@ const styles = {
         display: 'flex',
     },
     search: {
-        paddingTop: '6rem'
+        paddingBottom: '2rem'
     },
     textField: {
         maxWidth: '30rem',
