@@ -3,6 +3,7 @@ import Header from './Header';
 import SearchBar from './SearchBar'
 import JobBoard from './JobBoard'
 import Grid from '@material-ui/core/Grid';
+import WelcomeMessage from "./WelcomeMessage";
 
 export default class Home extends Component {
     constructor(props) {
@@ -26,9 +27,11 @@ export default class Home extends Component {
                 </Grid>
 
                 <Grid container spacing={24} direction="column"
-                      alignItems="center">
-                    <Grid item xs={8} sm={12} justify="center"
-                          alignItems="space-around">
+                      alignItems="center" justify="center">
+                    <Grid item xs={6} sm={8} >
+                        <WelcomeMessage/>
+                    </Grid>
+                    <Grid item xs={8} sm={12}>
                         <SearchBar searchTerm={this.handleSearch}/>
                     </Grid>
                         <JobBoard search={this.state.searchTerm}/>
