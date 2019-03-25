@@ -28,7 +28,6 @@ export default class GitHubService {
                 "Company Website": job.company_url,
                 Source: job.url,
                 Description: job.description,
-                Logo: job.company_logo
             };
         });
     }
