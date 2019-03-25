@@ -16,7 +16,7 @@ const styles = {
 
 export default class Header extends Component {
     render() {
-        return (<div>
+        return (<div className={"app-bar"}>
                     <AppBar elevation={1} >
                         <Toolbar>
                             <Typography variant="display1" color="secondary">remoteWork(tech)</Typography>
