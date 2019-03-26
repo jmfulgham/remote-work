@@ -6,6 +6,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         height: '15rem',
+        margin: '8rem 0.75rem 0 0.75rem'
 
     },
     text: {
