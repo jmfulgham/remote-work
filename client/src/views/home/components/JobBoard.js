@@ -14,7 +14,8 @@ import Grid from '@material-ui/core/Grid';
 import TableBody from "@material-ui/core/TableBody";
 import Table from "@material-ui/core/Table";
 import TableRow from "@material-ui/core/TableRow";
-
+import {withStyles} from '@material-ui/core/styles';
+// import './responsive.css';
 const parse = require('html-react-parser');
 
 
@@ -29,7 +30,7 @@ const styles = {
     date: {
         display: 'inline-flex',
         alignItems: 'center'
-    }
+    },
 };
 
 
@@ -77,28 +78,24 @@ export default class JobBoard extends Component {
         }
 
 
-        return (<div className="job-container">
+        return (<div className="parent-job-container">
 
-            {jobs.length === 0 && this.state.jobsLoading === true ?
-                <div>
-                    <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
-                        <Grid item xs={8} direction={"row"} justify={"space-around"}><Typography variant="h2">Finding
-                            Jobs...</Typography></Grid></Grid></div>:
-                <Table>
-                <TableBody>
-                {jobs.map(job => (
-                    <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
-                        <Grid item xs={8} direction={"row"} justify={"space-around"}>
+                {jobs.length === 0 && this.state.jobsLoading === true ?
+                    <div className={'finding-jobs'}>
+                        <Typography variant="h2">Finding
+                            Jobs...</Typography></div> :
+                    <div className={"child-job-container"}>
+                        {jobs.map(job => (
                             <ExpansionPanel>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
-                                    <Grid item> <TableRow key={job.id}>
-                                        <Typography
-                                            variant="h4">{job.Position} {job.Company}</Typography>
-                                        <Typography
-                                            variant="subtitle1"
-                                            style={styles.date}>
-                                            {moment(job.Date).format("MMM Do")}
-                                        </Typography></TableRow></Grid>
+                                <ExpansionPanelSummary
+                                    expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
+                                    <Typography
+                                        variant="h4">{job.Position} {job.Company}</Typography>
+                                    <Typography
+                                        variant="subtitle1"
+                                        style={styles.date}>
+                                        {moment(job.Date).format("MMM Do")}
+                                    </Typography>
                                 </ExpansionPanelSummary>
                                 <Divider/>
                                 <ExpansionPanelActions
@@ -123,15 +120,13 @@ export default class JobBoard extends Component {
                                         Apply</Button>
 
                                 </ExpansionPanelActions>
-                            </ExpansionPanel></Grid>
-                    </Grid>
-                ))
-                }</TableBody></Table>
+                            </ExpansionPanel>
 
-
-
+                        ))
+                        }
+                    </div>
                 }
-                </div>
-                )
-                }
-                }
+            </div>
+        )
+    }
+}
