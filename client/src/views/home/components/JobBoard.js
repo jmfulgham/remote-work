@@ -10,10 +10,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import TableBody from "@material-ui/core/TableBody";
-import Table from "@material-ui/core/Table";
-import TableRow from "@material-ui/core/TableRow";
 
 const parse = require('html-react-parser');
 
@@ -27,9 +23,11 @@ const styles = {
         color: "#27C4A8"
     },
     date: {
-        display: 'inline-flex',
-        alignItems: 'center'
-    }
+        display: 'flex',
+        width: '100%',
+        alignSelf: 'flex-end',
+        justifyContent: 'flex-end',
+    },
 };
 
 
@@ -77,28 +75,24 @@ export default class JobBoard extends Component {
         }
 
 
-        return (<div className="job-container">
+        return (<div className="parent-job-container">
 
-            {jobs.length === 0 && this.state.jobsLoading === true ?
-                <div>
-                    <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
-                        <Grid item xs={8} direction={"row"} justify={"space-around"}><Typography variant="h2">Finding
-                            Jobs...</Typography></Grid></Grid></div>:
-                <Table>
-                <TableBody>
-                {jobs.map(job => (
-                    <Grid container spacing={24} direction="column" className={"child-job-grid"} alignItems={"center"}>
-                        <Grid item xs={8} direction={"row"} justify={"space-around"}>
+                {jobs.length === 0 && this.state.jobsLoading === true ?
+                    <div className={'finding-jobs'}>
+                        <Typography variant="h2">Finding
+                            Jobs...</Typography></div> :
+                    <div className={"child-job-container"}>
+                        {jobs.map(job => (
                             <ExpansionPanel>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
-                                    <Grid item> <TableRow key={job.id}>
-                                        <Typography
-                                            variant="h4">{job.Position} {job.Company}</Typography>
-                                        <Typography
-                                            variant="subtitle1"
-                                            style={styles.date}>
-                                            {moment(job.Date).format("MMM Do")}
-                                        </Typography></TableRow></Grid>
+                                <ExpansionPanelSummary
+                                    expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
+                                    <Typography
+                                        variant="h5">{job.Position} {job.Company}</Typography>
+                                    <div className="date" style={styles.date}><Typography
+                                        variant="subtitle1"
+                                        style={styles.date}>
+                                        {moment(job.Date).format("MMM Do")}
+                                    </Typography></div>
                                 </ExpansionPanelSummary>
                                 <Divider/>
                                 <ExpansionPanelActions
@@ -122,16 +116,15 @@ export default class JobBoard extends Component {
                                             target="_blank">
                                         Apply</Button>
 
+
                                 </ExpansionPanelActions>
-                            </ExpansionPanel></Grid>
-                    </Grid>
-                ))
-                }</TableBody></Table>
+                            </ExpansionPanel>
 
-
-
+                        ))
+                        }
+                    </div>
                 }
-                </div>
-                )
-                }
-                }
+            </div>
+        )
+    }
+}
