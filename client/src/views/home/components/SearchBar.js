@@ -8,7 +8,7 @@ const styles = {
         display: 'flex',
     },
     search: {
-        paddingBottom: '2rem'
+        padding: '2rem'
     },
     textField: {
         maxWidth: '30rem',
@@ -25,7 +25,7 @@ export default class SearchBar extends Component {
 
     handleChange = event => {
         let input = event.target.value.toString();
-        let validatedInput = input.replace(/[^\w\s]/gi, '');
+        let validatedInput = input.replace(/[^A-Za-z0-9+#]/gi, '');
         this.props.searchTerm(validatedInput);
     };
 
@@ -47,7 +47,7 @@ export default class SearchBar extends Component {
                         className="search"
                         label="Search"
                         aria-describedby="search-for-jobs"
-                        helperText="Search by job title here"
+                        helperText="Search for jobs here"
                         onChange={this.handleChange}>
 
                     </TextField>
