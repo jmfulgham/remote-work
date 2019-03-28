@@ -23,8 +23,10 @@ const styles = {
         color: "#27C4A8"
     },
     date: {
-        display: 'inline-flex',
-        alignItems: 'center'
+        display: 'flex',
+        width: '100%',
+        alignSelf: 'flex-end',
+        justifyContent: 'flex-end',
     },
 };
 
@@ -86,11 +88,11 @@ export default class JobBoard extends Component {
                                     expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
                                     <Typography
                                         variant="h5">{job.Position} {job.Company}</Typography>
-                                    <Typography
+                                    <div className="date" style={styles.date}><Typography
                                         variant="subtitle1"
                                         style={styles.date}>
                                         {moment(job.Date).format("MMM Do")}
-                                    </Typography>
+                                    </Typography></div>
                                 </ExpansionPanelSummary>
                                 <Divider/>
                                 <ExpansionPanelActions
