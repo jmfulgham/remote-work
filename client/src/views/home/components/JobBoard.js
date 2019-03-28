@@ -10,12 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import TableBody from "@material-ui/core/TableBody";
-import Table from "@material-ui/core/Table";
-import TableRow from "@material-ui/core/TableRow";
-import {withStyles} from '@material-ui/core/styles';
-// import './responsive.css';
+
 const parse = require('html-react-parser');
 
 
@@ -90,7 +85,7 @@ export default class JobBoard extends Component {
                                 <ExpansionPanelSummary
                                     expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
                                     <Typography
-                                        variant="h4">{job.Position} {job.Company}</Typography>
+                                        variant="h5">{job.Position} {job.Company}</Typography>
                                     <Typography
                                         variant="subtitle1"
                                         style={styles.date}>
@@ -118,6 +113,7 @@ export default class JobBoard extends Component {
                                     <Button color="secondary" variant="contained" href={job.Source}
                                             target="_blank">
                                         Apply</Button>
+
 
                                 </ExpansionPanelActions>
                             </ExpansionPanel>

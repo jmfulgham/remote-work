@@ -42,7 +42,7 @@ export default class Home extends Component {
                     <Grid item xs={12} sm={6}>
                         <SearchBar searchTerm={this.handleSearch} />
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={10} sm={6}>
                         <JobBoard search={this.state.searchTerm} />
                     </Grid>
                 </Grid>
