@@ -51,6 +51,7 @@ export default class JobBoard extends Component {
         let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
         let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
         let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs);
+        jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
         this.setState({jobs: jobsList, jobsLoading: false});
     };
 

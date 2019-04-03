@@ -47,7 +47,7 @@ export default class SearchBar extends Component {
                         className="search"
                         label="Search"
                         aria-describedby="search-for-jobs"
-                        helperText="Search for jobs here"
+                        helperText="Search for jobs here! Use keywords such as 'engineer' or 'security'."
                         onChange={this.handleChange}>
 
                     </TextField>
