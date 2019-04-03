@@ -8,11 +8,12 @@ export default class StackOverflowService {
         let feed = await parser.parseURL(soRssUrl).catch(e => {
             return `S.O. error, ${e}`
         });
-        return this.handleStackOverflowFeed(feed);
+        let modifiedFeed= feed.items.slice(0,65);
+        return this.handleStackOverflowFeed(modifiedFeed);
     }
 
     handleStackOverflowFeed(feed) {
-        return feed.items.slice(0, 50).map(job => {
+        return feed.map(job => {
             return {
                 Id: job.guid,
                 Date: job.isoDate,

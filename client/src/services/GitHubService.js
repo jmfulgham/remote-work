@@ -1,7 +1,5 @@
 const axios = require('axios');
 
-const moment = require('moment');
-moment().format("MMM Do YY");
 
 export default class GitHubService {
 
@@ -19,7 +17,7 @@ export default class GitHubService {
     }
 
     handleGithubJobs(data) {
-        return data.slice(0,15).map(job => {
+        return data.slice(0,25).map(job => {
             return {
                 Id: job.id,
                 Date: job.created_at,
