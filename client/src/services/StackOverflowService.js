@@ -1,6 +1,5 @@
 let Parser = require('rss-parser');
 let parser = new Parser();
-const axios = require('axios');
 
 export default class StackOverflowService {
 
@@ -13,10 +12,7 @@ export default class StackOverflowService {
         return this.handleStackOverflowFeed(modifiedFeed);
     }
 
-
-
     handleStackOverflowFeed(feed) {
-        console.log(feed);
         return feed.map(job => {
             return {
                 Id: job.guid,

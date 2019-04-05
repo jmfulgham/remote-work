@@ -6,7 +6,6 @@ const path = require('path');
 const helmet = require('helmet');
 const uuidv4 = require('uuid/v4');
 
-const rssFormatService= require('./services/RSSFormatService');
 
 const nonce = new Buffer.from(uuidv4()).toString('base64');
 
@@ -73,6 +72,30 @@ app.get('/api/remoteOkRss', (req, res) => {
 
 app.get('/api/stackOverflow', (req, res) => {
     let url = 'https://stackoverflow.com/jobs/feed?r=true';
+    axios({
+        method: 'get',
+        url,
+    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
+});
+
+app.get('/api/weWorkRemotely/devOps', (req, res)=>{
+    let url = 'https://weworkremotely.com/categories/remote-devops-sysadmin-jobs.rss';
+    axios({
+        method: 'get',
+        url,
+    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
+});
+
+app.get('/api/weWorkRemotely/product', (req, res)=>{
+    let url = 'https://weworkremotely.com/categories/product.rss';
+    axios({
+        method: 'get',
+        url,
+    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
+});
+
+app.get('/api/weWorkRemotely/design', (req, res)=>{
+    let url = 'https://weworkremotely.com/categories/remote-design-jobs.rss';
     axios({
         method: 'get',
         url,
