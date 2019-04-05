@@ -37,7 +37,7 @@ export default class JobBoard extends Component {
         super(props);
         this.state = {
             jobsLoading: true,
-            jobs: [],
+            jobs: localStorage.getItem("jobs") ? JSON.parse(localStorage.getItem("jobs")) : [],
             expanded: false,
 
         };
@@ -61,6 +61,18 @@ export default class JobBoard extends Component {
     };
 
 
+    componentWillUnmount() {
+        // Remember state for the next mount
+        this.handleCache();
+    }
+
+    handleCache = () => {
+        localStorage.setItem('jobs', JSON.stringify(this.state.jobs.splice(0,25)));
+        let cachedJobs = JSON.parse(localStorage.getItem('jobs'));
+        console.log(cachedJobs);
+        return (cachedJobs);
+    };
+
     handleSearch = () => {
         let searchJob = [];
         let search = this.props.search.toLowerCase();
@@ -79,7 +91,6 @@ export default class JobBoard extends Component {
         } else {
             jobs = this.state.jobs;
         }
-
 
         return (<div className="parent-job-container">
 
