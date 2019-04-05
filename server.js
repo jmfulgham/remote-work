@@ -54,31 +54,26 @@ if (process.env.NODE_ENV === "production") {
 
 app.get('/api/github', (req, res) => {
     console.log(`first call made from ${port}`);
+    let url = 'https://jobs.github.com/positions.json?&location=remote&page=1';
     axios({
         method: 'get',
-        url: 'https://jobs.github.com/positions.json?&location=remote&page=1',
+        url
     })
         .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
-app.get('/api/remoteOk', (req, res) => {
-    axios({
-        method: 'get',
-        url: 'https://remoteok.io/api',
-    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
-});
-
-
 app.get('/api/remoteOkRss', (req, res) => {
+    let url = 'https://remoteok.io/remote-jobs.rss';
     axios({
         method: 'get',
-        url: 'https://remoteok.io/remote-jobs.rss',
+        url
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
 app.get('/api/stackOverflow', (req, res) => {
+    let url = 'https://stackoverflow.com/jobs/feed?r=true';
     axios({
         method: 'get',
-        url: 'https://stackoverflow.com/jobs/feed?r=true',
+        url,
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
