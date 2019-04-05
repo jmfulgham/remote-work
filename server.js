@@ -6,8 +6,9 @@ const path = require('path');
 const helmet = require('helmet');
 const uuidv4 = require('uuid/v4');
 
-const nonce = new Buffer.from(uuidv4()).toString('base64');
+const rssFormatService= require('./services/RSSFormatService');
 
+const nonce = new Buffer.from(uuidv4()).toString('base64');
 
 app.use(helmet());
 app.use((req, res, next) => {
