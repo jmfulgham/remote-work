@@ -10,6 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import WeWorkRemotelyService from "../../../services/WeWorkRemotelyService";
 
 const parse = require('html-react-parser');
 
@@ -43,6 +44,7 @@ export default class JobBoard extends Component {
         this.remoteOkService = new RemoteOkService();
         this.gitHubService = new GitHubService();
         this.stackOverflowService = new StackOverflowService();
+        this.weWorkRemotelyService = new WeWorkRemotelyService();
     };
 
 
@@ -50,7 +52,8 @@ export default class JobBoard extends Component {
         let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
         let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
         let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
-        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs);
+        let weWorkRemotelyJobs = await this.weWorkRemotelyService.concatAndFormatFeed();
+        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs, weWorkRemotelyJobs);
         jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
         this.setState({jobs: jobsList, jobsLoading: false});
     };
