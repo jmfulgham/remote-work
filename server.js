@@ -78,7 +78,7 @@ app.get('/api/stackOverflow', (req, res) => {
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
-app.get('/api/weWorkRemotely/devOps', (req, res)=>{
+app.get('/api/weWorkRemotely/devOps', (req, res) => {
     let url = 'https://weworkremotely.com/categories/remote-devops-sysadmin-jobs.rss';
     axios({
         method: 'get',
@@ -86,7 +86,7 @@ app.get('/api/weWorkRemotely/devOps', (req, res)=>{
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
-app.get('/api/weWorkRemotely/product', (req, res)=>{
+app.get('/api/weWorkRemotely/product', (req, res) => {
     let url = 'https://weworkremotely.com/categories/product.rss';
     axios({
         method: 'get',
@@ -94,7 +94,7 @@ app.get('/api/weWorkRemotely/product', (req, res)=>{
     }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
-app.get('/api/weWorkRemotely/design', (req, res)=>{
+app.get('/api/weWorkRemotely/design', (req, res) => {
     let url = 'https://weworkremotely.com/categories/remote-design-jobs.rss';
     axios({
         method: 'get',
