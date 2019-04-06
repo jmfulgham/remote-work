@@ -56,7 +56,7 @@ export default class JobBoard extends Component {
         let wwrProductJobs = await this.weWorkRemotelyService.getWWRProductJobs();
         let wwrDesignJobs = await this.weWorkRemotelyService.getWWRDesignJobs();
         let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs, weWorkRemotelyDevOpsJobs, wwrProductJobs, wwrDesignJobs);
-        jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
+        jobsList.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
         this.setState({jobs: jobsList, jobsLoading: false});
     };
 
@@ -67,7 +67,7 @@ export default class JobBoard extends Component {
     }
 
     handleCache = () => {
-        localStorage.setItem('jobs', JSON.stringify(this.state.jobs.splice(0,25)));
+        localStorage.setItem('jobs', JSON.stringify(this.state.jobs.splice(0, 25)));
         let cachedJobs = JSON.parse(localStorage.getItem('jobs'));
         console.log(cachedJobs);
         return (cachedJobs);
