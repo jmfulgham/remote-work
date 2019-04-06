@@ -1,5 +1,5 @@
-let Parser = require('rss-parser');
-let parser = new Parser();
+let P = require('rss-parser');
+let parser = new P();
 
 export default class WeWorkRemotelyService {
 
