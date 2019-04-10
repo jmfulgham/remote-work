@@ -1,6 +1,5 @@
 const axios = require('axios');
-
-export default class GitHubService {
+ class GitHubService {
 
      getAllGitHubRemoteJobs() {
         let url = '/api/github';
@@ -8,6 +7,7 @@ export default class GitHubService {
             method:'get',
             url: url
         }).then((response) => {
+            console.log('cron called me');
            return this.handleGithubJobs(response.data);
         }).catch(e =>{
             return `Please try your GH request again ${e}`;
@@ -30,3 +30,4 @@ export default class GitHubService {
     }
 }
 
+export default GitHubService();

@@ -1,3 +1,4 @@
+require( './cron');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -5,7 +6,6 @@ const axios = require('axios');
 const path = require('path');
 const helmet = require('helmet');
 const uuidv4 = require('uuid/v4');
-
 
 const nonce = new Buffer.from(uuidv4()).toString('base64');
 

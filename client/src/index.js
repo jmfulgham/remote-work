@@ -7,6 +7,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./theme";
 // import * as serviceWorker from './serviceWorker';
 
+
+
 ReactDOM.render(<MuiThemeProvider theme = { theme }><CssBaseline /><App /></MuiThemeProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
