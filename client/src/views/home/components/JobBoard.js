@@ -52,10 +52,8 @@ export default class JobBoard extends Component {
         let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
         let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
         let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
-        let weWorkRemotelyDevOpsJobs = await this.weWorkRemotelyService.getWeWorkRemotelyDevOpsJobs();
-        let wwrProductJobs = await this.weWorkRemotelyService.getWWRProductJobs();
-        let wwrDesignJobs = await this.weWorkRemotelyService.getWWRDesignJobs();
-        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs, weWorkRemotelyDevOpsJobs, wwrProductJobs, wwrDesignJobs);
+        let weWorkRemotelyJobs = await this.weWorkRemotelyService.concatAndFormatFeed();
+        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs, weWorkRemotelyJobs);
         jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
         this.setState({jobs: jobsList, jobsLoading: false});
     };
