@@ -11,6 +11,10 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import WeWorkRemotelyService from "../../../services/WeWorkRemotelyService";
+import Lottie from 'react-lottie';
+import animationData from '../../../loading-animation';
+import Grid from '@material-ui/core/Grid';
+
 
 const parse = require('html-react-parser');
 
@@ -31,13 +35,21 @@ const styles = {
     },
 };
 
+const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice',
+    },
+};
 
 export default class JobBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             jobsLoading: true,
-            jobs: [],
+            jobs: localStorage.getItem("jobs") ? JSON.parse(localStorage.getItem("jobs")) : [],
             expanded: false,
 
         };
@@ -78,13 +90,17 @@ export default class JobBoard extends Component {
             jobs = this.state.jobs;
         }
 
-
         return (<div className="parent-job-container">
 
                 {jobs.length === 0 && this.state.jobsLoading === true ?
-                    <div className={'finding-jobs'}>
-                        <Typography variant="h2">Finding
-                            Jobs...</Typography></div> :
+                        <Grid container direction="row"
+                              alignItems="center" justify="center">
+                                <Lottie options={defaultOptions}
+                                        height={300}
+                                        width={300}
+                                />
+                            </Grid>
+                     :
                     <div className={"child-job-container"}>
                         {jobs.map(job => (
                             <ExpansionPanel>
