@@ -93,16 +93,14 @@ export default class JobBoard extends Component {
         return (<div className="parent-job-container">
 
                 {jobs.length === 0 && this.state.jobsLoading === true ?
-                    <div className={'finding-jobs'}>
                         <Grid container direction="row"
                               alignItems="center" justify="center">
-                            <Grid item xs={12}>
                                 <Lottie options={defaultOptions}
-                                        height={350}
-                                        width={350}
+                                        height={300}
+                                        width={300}
                                 />
-                            </Grid></Grid>
-                    </div> :
+                            </Grid>
+                     :
                     <div className={"child-job-container"}>
                         {jobs.map(job => (
                             <ExpansionPanel>
