@@ -49,7 +49,7 @@ export default class JobBoard extends Component {
         super(props);
         this.state = {
             jobsLoading: true,
-            jobs: [],
+            jobs: localStorage.getItem("jobs") ? JSON.parse(localStorage.getItem("jobs")) : [],
             expanded: false,
 
         };
@@ -71,29 +71,6 @@ export default class JobBoard extends Component {
     };
 
 
-    handleLoad = () => {
-
-        return (<div style={styles.parent}>
-            <div style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                margin: '7rem'
-            }}>
-                <Grid container direction="row"
-                      alignItems="center" justify="center">
-                    <Grid item xs={12}>
-                        <Lottie options={defaultOptions}
-                                height={350}
-                                width={350}
-                        />
-                    </Grid></Grid>
-
-            </div>
-        </div>)
-    };
-
-
-
     handleSearch = () => {
         let searchJob = [];
         let search = this.props.search.toLowerCase();
@@ -112,7 +89,6 @@ export default class JobBoard extends Component {
         } else {
             jobs = this.state.jobs;
         }
-
 
         return (<div className="parent-job-container">
 
