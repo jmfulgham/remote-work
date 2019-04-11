@@ -11,6 +11,10 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import WeWorkRemotelyService from "../../../services/WeWorkRemotelyService";
+import Lottie from 'react-lottie';
+import animationData from '../../../loading-animation';
+import Grid from '@material-ui/core/Grid';
+
 
 const parse = require('html-react-parser');
 
@@ -31,6 +35,14 @@ const styles = {
     },
 };
 
+const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice',
+    },
+};
 
 export default class JobBoard extends Component {
     constructor(props) {
@@ -52,26 +64,12 @@ export default class JobBoard extends Component {
         let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
         let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
         let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
-        let weWorkRemotelyDevOpsJobs = await this.weWorkRemotelyService.getWeWorkRemotelyDevOpsJobs();
-        let wwrProductJobs = await this.weWorkRemotelyService.getWWRProductJobs();
-        let wwrDesignJobs = await this.weWorkRemotelyService.getWWRDesignJobs();
-        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs, weWorkRemotelyDevOpsJobs, wwrProductJobs, wwrDesignJobs);
+        let weWorkRemotelyJobs = await this.weWorkRemotelyService.concatAndFormatFeed();
+        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs, weWorkRemotelyJobs);
         jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
         this.setState({jobs: jobsList, jobsLoading: false});
     };
 
-
-    componentWillUnmount() {
-        // Remember state for the next mount
-        this.handleCache();
-    }
-
-    handleCache = () => {
-        localStorage.setItem('jobs', JSON.stringify(this.state.jobs.splice(0,25)));
-        let cachedJobs = JSON.parse(localStorage.getItem('jobs'));
-        console.log(cachedJobs);
-        return (cachedJobs);
-    };
 
     handleSearch = () => {
         let searchJob = [];
@@ -96,8 +94,15 @@ export default class JobBoard extends Component {
 
                 {jobs.length === 0 && this.state.jobsLoading === true ?
                     <div className={'finding-jobs'}>
-                        <Typography variant="h2">Finding
-                            Jobs...</Typography></div> :
+                        <Grid container direction="row"
+                              alignItems="center" justify="center">
+                            <Grid item xs={12}>
+                                <Lottie options={defaultOptions}
+                                        height={350}
+                                        width={350}
+                                />
+                            </Grid></Grid>
+                    </div> :
                     <div className={"child-job-container"}>
                         {jobs.map(job => (
                             <ExpansionPanel>
