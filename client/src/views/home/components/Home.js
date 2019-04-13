@@ -31,10 +31,6 @@ export default class Home extends Component {
             <div style={styles.parent}>
                 <Grid container direction="column"
                       alignItems="center" justify="space-around">
-                    <Grid item xs={12}>
-                        <Header/>
-                    </Grid>
-
                     <Grid item xs={12} sm={6}>
                         <WelcomeMessage />
                     </Grid>
