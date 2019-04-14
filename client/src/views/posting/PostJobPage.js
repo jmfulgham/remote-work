@@ -7,29 +7,34 @@ const styles = {
 
     container: {
         display: 'flex',
-        flexDirection: 'row',
-        height: '15rem',
+        flexDirection: 'column',
         margin: '4rem 0.75rem 0 0.75rem'
     },
+    title: {
+        marginTop: '25%'
+    }
 };
 
-export default class PostJobPage extends Component{
+export default class PostJobPage extends Component {
 
-    render(){
-        return <div className="parent" style={styles.container}>
-            <Grid container direction="column"
-                  alignItems="center" justify="space-around">
-                <Grid item xs={12} sm={6}>
-            <section style={{margin: '1rem'}}>
-                <Typography variant="h1">Post a Job</Typography>
-            </section>
-                    <section>
-                        <Typography variant="h5"> Looking for talent? Post your position below!</Typography>
-                    </section>
-                    <JobTextEditor/>
+    render() {
+        return (
+            <div className="parent" style={styles.container}>
+                <Grid container direction="column"
+                      alignItems="center" justify="space-around">
+                    <Grid item xs={12} sm={6}>
+                        <div className="text-description" style={styles.title}>
+                            <section>
+                                <Typography variant="h1">Post a Job</Typography>
+                            </section>
+                            <section>
+                                <Typography variant="h5" color="secondary"> Looking for talent? Post your position below!</Typography>
+                            </section>
+                        </div>
+                        <JobTextEditor/>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </div>
+            </div>)
     }
 
 }
