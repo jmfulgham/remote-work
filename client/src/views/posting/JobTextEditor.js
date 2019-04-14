@@ -3,7 +3,10 @@ import ReactQuill from 'react-quill';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
-
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 require('react-quill/dist/quill.snow.css');
 
 const styles = theme => ({
@@ -30,9 +33,20 @@ const styles = theme => ({
     },
     container: {
         width: '100%'
-    }
+    },
+
+    selectEmpty: {
+        marginTop: theme.spacing.unit * 2,
+        // padding: theme.spacing.unit * 1
+    },
 });
 
+const container = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignContent: 'space-around'
+};
 
 class JobTextEditor extends Component{
 
@@ -42,14 +56,18 @@ class JobTextEditor extends Component{
 
     }
 
-    handleChange = (value) => {
-        this.setState({ text: value })
+    // handleChange = (value) => {
+    //     this.setState({ text: value })
+    // };
+
+    handleChange = event => {
+        this.setState({ ...this.state, [event.target.name]: event.target.value });
     };
 
     render() {
         const { classes } = this.props;
         return (
-            <div classname="job-listing-parent">
+            <div classname="job-listing-parent" style={container}>
                 <section>
                     <FormControl className={classes.container}>
                     <TextField
@@ -91,13 +109,43 @@ class JobTextEditor extends Component{
                             }}
                         />
                     </FormControl>
+                    <FormControl className={classes.container}>
+                        <InputLabel htmlFor="age-simple">Category</InputLabel>
+                        <Select
+                            value={this.state.age}
+                            onChange={this.handleChange}
+                            inputProps={{
+                                name: 'category',
+                            }}
+                            input={
+                                <OutlinedInput
+                                    margin={"dense"}/>}
+                            className={classes.selectEmpty}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value="Software Engineer/Web Development">Software Engineer/Web Development</MenuItem>
+                            <MenuItem value="Mobile Development">Mobile Development</MenuItem>
+                            <MenuItem value="IT Support Services">IT Support Services</MenuItem>
+                            <MenuItem value={"Information Security"}>Information Security</MenuItem>
+                            <MenuItem value="Network Engineering">Network Engineering</MenuItem>
+                            <MenuItem value={"Systems Administration"}>Systems Administration</MenuItem>
+                            <MenuItem value={"Data Science"}>Data Science</MenuItem>
+                            <MenuItem value={"Database Administration"}>Database Administration</MenuItem>
+                            <MenuItem value={"Artificial Intelligence"}>Artificial Intelligence</MenuItem>
+                            <MenuItem value={"Machine Learning"}>Machine Learning</MenuItem>
+                        </Select>
+
+                    </FormControl>
                 </section>
+                <section className={"text-input"} style={{marginTop: '1rem'}}>
             <ReactQuill value={this.state.text}
                         onChange={this.handleChange} />
+                </section>
             </div>
         )
     }
-
 }
 
 export default withStyles(styles)(JobTextEditor)
