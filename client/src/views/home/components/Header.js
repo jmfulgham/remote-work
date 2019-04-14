@@ -30,16 +30,17 @@ export default class Header extends Component {
                         <Typography variant="subtitle1" style={{color: "#27C4A8"}}>beta</Typography>
 
                         <div style={styles.social}>
-                            <Typography>  <a href="mailto:mo@jaimo.net?subject=Hey! I love remoteWork.tech!"
-                               style={{textDecoration: 'none', color: "#27C4A8"}}>Contact
+                            <Typography variant="h6"> <a href="mailto:mo@jaimo.net?subject=Hey! I love remoteWork.tech!"
+                                                         style={{textDecoration: 'none', color: "#27C4A8"}}>Contact
                             </a></Typography>
 
-                            <Typography><NavLink to="/post-job"
-                                 style={{
-                                     color: "#27C4A8",
-                                     textDecoration: 'none',
-                                     margin: '1rem'
-                                 }}> Post a Job!</NavLink></Typography>
+                            <Typography variant="h6"><NavLink to="/post-job"
+                                                              style={{
+                                                                  color: "#27C4A8",
+                                                                  textDecoration: 'none',
+                                                                  margin: '1rem'
+                                                              }}
+                            > Post a Job!</NavLink></Typography>
                         </div>
                     </Toolbar>
                 </AppBar>
