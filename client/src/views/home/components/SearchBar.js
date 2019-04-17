@@ -25,7 +25,7 @@ export default class SearchBar extends Component {
 
     handleChange = event => {
         let input = event.target.value.toString();
-        let validatedInput = input.replace(/[^A-Za-z0-9+#]/gi, '');
+        let validatedInput = input.replace(/[^A-Za-z0-9+#\s]/gi, '');
         this.props.searchTerm(validatedInput);
     };
 
