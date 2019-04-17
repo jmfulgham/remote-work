@@ -33,6 +33,7 @@
     "node-cron": "^2.0.3",
     "nodemon": "^1.18.10",
     "rss-parser": "^3.7.0",
+    "shelljs": "^0.8.3",
     "typeface-poppins": "0.0.72",
     "typeface-questrial": "0.0.72",
     "uuid": "^3.3.2"
