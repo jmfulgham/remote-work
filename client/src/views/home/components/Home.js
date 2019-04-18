@@ -4,6 +4,7 @@ import SearchBar from './SearchBar'
 import JobBoard from './JobBoard'
 import Grid from '@material-ui/core/Grid';
 import WelcomeMessage from "./WelcomeMessage";
+import Footer from "./Footer";
 
 const styles = {
     parent: {
@@ -36,15 +37,19 @@ export default class Home extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <WelcomeMessage />
+                        <WelcomeMessage/>
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <SearchBar searchTerm={this.handleSearch} />
+                        <SearchBar searchTerm={this.handleSearch}/>
                     </Grid>
+
                     <Grid item xs={10} sm={6}>
-                        <JobBoard search={this.state.searchTerm} />
+                        <JobBoard search={this.state.searchTerm}/>
                     </Grid>
+
+                        <Footer search={this.state.searchTerm}/>
+
                 </Grid>
             </div>
         )
