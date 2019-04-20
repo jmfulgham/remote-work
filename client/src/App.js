@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Home from './views/home/components/Home';
 
 class App extends Component {
