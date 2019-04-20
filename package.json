@@ -1,10 +1,14 @@
 {
   "name": "remote-work",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
   "description": "server",
   "main": "server.js",
   "scripts": {
-    "test": "snyk test",
+    "test": "react-scripts-test",
     "run": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server.js",
     "server": "nodemon server.js",
