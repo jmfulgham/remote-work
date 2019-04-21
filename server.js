@@ -6,7 +6,7 @@ const path = require('path');
 const helmet = require('helmet');
 const uuidv4 = require('uuid/v4');
 
-
+const favicon = require('serve-favicon');
 const nonce = new Buffer.from(uuidv4()).toString('base64');
 
 app.use(helmet());
@@ -39,6 +39,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+app.use(favicon(path.join(__dirname,'client', 'public', 'rwtfavicon.ico')));
 
 app.get('/', (req, res) => {
     res.render('index', {styleNonce: res.locals.styleNonce})
