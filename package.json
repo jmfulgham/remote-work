@@ -1,16 +1,19 @@
 {
   "name": "remote-work",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
   "description": "server",
   "main": "server.js",
   "scripts": {
-    "test": "snyk test",
+    "test": "react-scripts-test",
     "run": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "cd client && npm start",
-    "heroku-postbuild": "npm install && cd client && npm install && npm run build",
-    "babel-node": "babel-node --presets=/*a*/ --ignore='foo|bar|baz'"
+    "heroku-postbuild": "npm install && cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -32,8 +35,11 @@
     "moment": "^2.24.0",
     "node-cron": "^2.0.3",
     "nodemon": "^1.18.10",
+    "redis": "^2.8.0",
     "rss-parser": "^3.7.0",
+    "serve-favicon": "^2.5.0",
     "shelljs": "^0.8.3",
+    "sqreen": "^1.30.1",
     "typeface-poppins": "0.0.72",
     "typeface-questrial": "0.0.72",
     "uuid": "^3.3.2"
@@ -45,9 +51,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
     "concurrently": "^4.1.0",
     "snyk": "^1.143.1"
   }
