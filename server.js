@@ -1,3 +1,4 @@
+require('sqreen');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -5,10 +6,11 @@ const axios = require('axios');
 const path = require('path');
 const helmet = require('helmet');
 const uuidv4 = require('uuid/v4');
-const cron = require('node-cron');
+const redis = require('redis');
+const client = redis.createClient();
 
 
-
+const favicon = require('serve-favicon');
 const nonce = new Buffer.from(uuidv4()).toString('base64');
 
 app.use(helmet());
@@ -41,6 +43,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+app.use(favicon(path.join(__dirname, 'client', 'public', 'rwtfavicon.ico')));
 
 app.get('/', (req, res) => {
     res.render('index', {styleNonce: res.locals.styleNonce})
@@ -54,15 +57,17 @@ if (process.env.NODE_ENV === "production") {
     })
 }
 
-app.get('/api/github', (req, res) => {
-    console.log(`first call made from ${port}`);
-    let url = 'https://jobs.github.com/positions.json?&location=remote&page=1';
-    axios({
-        method: 'get',
-        url
-    })
-        .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
-});
+
+
+// app.get('/api/github', (req, res) => {
+//     console.log(`first call made from ${port}`);
+//     let url = 'https://jobs.github.com/positions.json?&location=remote&page=1';
+//     axios({
+//         method: 'get',
+//         url
+//     })
+//         .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
+// });
 
 app.get('/api/remoteOkRss', (req, res) => {
     let url = 'https://remoteok.io/remote-jobs.rss';
@@ -105,10 +110,39 @@ app.get('/api/weWorkRemotely/design', (req, res) => {
 });
 
 
-cron.schedule("* * * * *", () => {
-    const shell = require("shelljs");
-    shell.exec('curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:5000/api/github');
-    shell.echo("Database backup complete");
-}, {
-    scheduled: true
+/////////////////////
+//Redis DB Creation
+/////////////////////
+
+
+// Print redis errors to the console
+client.on('error', (err) => {
+    console.log("Error " + err);
+});
+
+client.on('connect', function() {
+    console.log('Redis client connected');
+});
+
+client.set("string key", "string val", redis.print);
+
+app.get('/api/github', (req, res) => {
+    console.log(`first call made from ${port}`);
+    let url = 'https://jobs.github.com/positions.json?&location=remote&page=1';
+    client.get('github:jobs', (err, result) => {
+        if (result) {
+            console.log("Found it in Redis");
+            let resultJSON = result.data;
+            return resultJSON;
+        } else if (err){
+            console.log("Redis threw an error ", err);
+        } else{
+            axios.get(url)
+                .then(resp => {
+                    let respy = resp.data;
+                    client.setex('github', , JSON.stringify({ source: 'Redis Cache', ...respy, }));
+                    return res.status(200).json({ source: 'githubAPI', ...respy, });
+                }).catch(e => `Server error, ${e}`);
+        }
+    });
 });
