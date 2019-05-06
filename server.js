@@ -8,7 +8,8 @@ const helmet = require('helmet');
 const uuidv4 = require('uuid/v4');
 const redis = require('redis');
 const client = redis.createClient();
-
+const {promisify} = require('util');
+const getAsync = promisify(client.get).bind(client);
 
 const favicon = require('serve-favicon');
 const nonce = new Buffer.from(uuidv4()).toString('base64');
@@ -54,28 +55,10 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, 'client/build/index.html'));
-    })
+    });
 }
+;
 
-
-
-// app.get('/api/github', (req, res) => {
-//     console.log(`first call made from ${port}`);
-//     let url = 'https://jobs.github.com/positions.json?&location=remote&page=1';
-//     axios({
-//         method: 'get',
-//         url
-//     })
-//         .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
-// });
-
-app.get('/api/remoteOkRss', (req, res) => {
-    let url = 'https://remoteok.io/remote-jobs.rss';
-    axios({
-        method: 'get',
-        url
-    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
-});
 
 app.get('/api/stackOverflow', (req, res) => {
     let url = 'https://stackoverflow.com/jobs/feed?r=true';
@@ -120,29 +103,52 @@ client.on('error', (err) => {
     console.log("Error " + err);
 });
 
-client.on('connect', function() {
+client.on('connect', function () {
     console.log('Redis client connected');
 });
 
-client.set("string key", "string val", redis.print);
 
 app.get('/api/github', (req, res) => {
-    console.log(`first call made from ${port}`);
     let url = 'https://jobs.github.com/positions.json?&location=remote&page=1';
-    client.get('github:jobs', (err, result) => {
+    client.get('github', (err, result) => {
         if (result) {
-            console.log("Found it in Redis");
-            let resultJSON = result.data;
-            return resultJSON;
-        } else if (err){
-            console.log("Redis threw an error ", err);
-        } else{
+            return getAsync('github').then(function (resp) {
+                console.log('GH from redis');
+                res.send(resp);
+            }).catch(e => {
+                console.log("uh oh", e);
+            })
+        } else {
             axios.get(url)
                 .then(resp => {
                     let respy = resp.data;
-                    client.setex('github', , JSON.stringify({ source: 'Redis Cache', ...respy, }));
-                    return res.status(200).json({ source: 'githubAPI', ...respy, });
+                    console.log('Had to call GH');
+                    client.setex('github', 3600, JSON.stringify(respy));
+                    res.send(resp);
                 }).catch(e => `Server error, ${e}`);
+        }
+    });
+});
+
+
+app.get('/api/remoteOkRss', (req, res) => {
+    let url = 'https://remoteok.io/remote-jobs.rss';
+    client.get('remote', (err, result) => {
+        if (result) {
+            return getAsync('remote').then(function (resp) {
+                console.log('remote from redis');
+                res.send(resp);
+            }).catch(e => {
+                console.log("uh oh rw threw an error", e);
+            })
+        } else {
+            axios.get(url)
+                .then(resp => {
+                    let respy = resp.data;
+                    console.log('Had to call rw');
+                    client.setex('remote', 3600, respy);
+                    res.send(resp)
+                }).catch(e => `Server error, ${e}`)
         }
     });
 });

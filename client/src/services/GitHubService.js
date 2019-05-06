@@ -15,7 +15,7 @@ const axios = require('axios');
     }
 
     handleGithubJobs(data) {
-        return data.slice(0,25).map(job => {
+        return data.slice(0,50).map(job => {
             return {
                 Id: job.id,
                 Date: job.created_at,
