@@ -9,6 +9,19 @@ const uuidv4 = require('uuid/v4');
 const favicon = require('serve-favicon');
 const nonce = new Buffer.from(uuidv4()).toString('base64');
 
+const mysql      = require('mysql');
+const connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password: 'remotework',
+    database : 'remoteWork'
+});
+
+connection.connect((err) => {
+    if (err) throw err;
+    console.log('Connected!', err.stack);
+});
+
 app.use(helmet());
 app.use((req, res, next) => {
     res.locals.styleNonce = Buffer.from(uuidv4()).toString('base64');
