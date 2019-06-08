@@ -1,25 +1,36 @@
 const axios = require('axios')
 const fs = require('fs')
 
-function importGithubJobs () {
-  let url = 'https://jobs.github.com/positions.json?&location=remote&page=1'
-  return axios({
-    method: 'get',
-    url: url
-  }).then((response) => {
-    let data = handleGithubJobs(response.data)
+let services = [
+  {
+    url: 'https://jobs.github.com/positions.json?&location=remote&page=1',
+    formatter: formatGithubJobs
+  }
+]
 
-    fs.appendFile('jobs.json', JSON.stringify(data), (err) => {
-      console.error(err)
+function importJobs () {
+  let data = []
+
+  services.forEach((service) => {
+    let url = service.url
+    return axios({
+      method: 'get',
+      url: url
+    }).then((response) => {
+      let d = service.formatter(response.data)
+      data.concat(d)
+    }).catch(e => {
+      console.error(`Please try your GH request again ${e}`)
     })
-
-    console.log('File appended with GH jobs')
-  }).catch(e => {
-    console.error(`Please try your GH request again ${e}`)
   })
+
+  fs.writeFile('jobs.json', JSON.stringify(data), (err) => {
+    console.error(err)
+  })
+  console.log('File appended with jobs data')
 }
 
-function handleGithubJobs (data) {
+function formatGithubJobs (data) {
   return data.slice(0, 25).map(job => {
     return {
       Id: job.id,
@@ -33,4 +44,4 @@ function handleGithubJobs (data) {
   })
 }
 
-importGithubJobs()
+importJobs()
