@@ -33,6 +33,9 @@ const styles = {
         alignSelf: 'flex-end',
         justifyContent: 'flex-end',
     },
+    text:{
+        maxWidth: '100%'
+    }
 };
 
 const defaultOptions = {
@@ -124,9 +127,10 @@ export default class JobBoard extends Component {
 
                                 </ExpansionPanelActions>
                                 <ExpansionPanelDetails>
+                                    <div style={styles.text}>
                                     <Typography variant='body1'>
                                         {parse(`${job.Description}`)}
-                                    </Typography>
+                                    </Typography></div>
                                 </ExpansionPanelDetails>
                                 <Divider/>
                                 <ExpansionPanelActions
