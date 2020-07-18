@@ -21,13 +21,16 @@
     "rss-parser": "^3.6.3",
     "rss-to-json": "^1.0.4",
     "typeface-quicksand": "0.0.71",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "snyk": "^1.161.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,5 +45,6 @@
     "@babel/preset-env": "^7.3.4",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0"
-  }
+  },
+  "snyk": true
 }
