@@ -1,5 +1,6 @@
 let P = require('rss-parser');
 let parser = new P();
+
 export default class RemoteOkService {
 
    async getRemoteOkJobs() {
