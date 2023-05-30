@@ -10,7 +10,7 @@
     "express": "^4.16.4",
     "feed-to-json-promise": "^1.8.0",
     "lottie-web": "^5.5.1",
-    "markdown-to-jsx": "^6.9.3",
+    "markdown-to-jsx": "^7.2.0",
     "material-icons-react": "^1.0.4",
     "mui-datatables": "2.0.0-beta-41",
     "react": "^16.8.3",
