@@ -6,7 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "axios": "^0.18.0",
+    "axios": "^1.6.4",
     "express": "^4.16.4",
     "feed-to-json-promise": "^1.8.0",
     "lottie-web": "^5.5.1",
