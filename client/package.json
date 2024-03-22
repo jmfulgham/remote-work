@@ -1,6 +1,6 @@
 {
   "name": "remote-work",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "proxy": "http://localhost:5000/",
   "dependencies": {
@@ -13,8 +13,7 @@
     "markdown-to-jsx": "^6.9.3",
     "material-icons-react": "^1.0.4",
     "mui-datatables": "2.0.0-beta-41",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "react": "^18.2.0",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.8",

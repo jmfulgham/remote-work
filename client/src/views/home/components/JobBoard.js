@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
-import RemoteOkService from '../../../services/RemoteOkService';
-import GitHubService from "../../../services/GitHubService";
-import StackOverflowService from "../../../services/StackOverflowService";
+import React, {useEffect, useState} from 'react';
+import {useGetRemoteOkJobs} from '../../../services/RemoteOkService';
+import {useGetAllGitHubRemoteJobs} from "../../../services/GitHubService";
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -10,14 +9,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import WeWorkRemotelyService from "../../../services/WeWorkRemotelyService";
+import {useGetWeWorkRemotelyJobs} from "../../../services/WeWorkRemotelyService";
 import Lottie from 'react-lottie';
 import animationData from '../../../loading-animation';
 import Grid from '@material-ui/core/Grid';
 
-
 const parse = require('html-react-parser');
-
 
 const moment = require('moment');
 moment().format("MMM Do YY");
@@ -47,37 +44,33 @@ const defaultOptions = {
     },
 };
 
-export default class JobBoard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            jobsLoading: true,
-            jobs: localStorage.getItem("jobs") ? JSON.parse(localStorage.getItem("jobs")) : [],
-            expanded: false,
+export const JobBoard = (props) => {
+    const [jobsState, setJobsState] = useState({
+        jobsLoading: true,
+        jobs: localStorage.getItem("jobs") ? JSON.parse(localStorage.getItem("jobs")) : [],
+        expanded: false,
+    });
 
-        };
-        this.remoteOkService = new RemoteOkService();
-        this.gitHubService = new GitHubService();
-        this.stackOverflowService = new StackOverflowService();
-        this.weWorkRemotelyService = new WeWorkRemotelyService();
-    };
+    useEffect(() => {
+        (async()=>{
+            let jobsList = [];
+            let remoteOkJobs = await useGetRemoteOkJobs();
+            console.log({remoteOkJobs})
+            // let weWorkRemotelyJobs = await useGetWeWorkRemotelyJobs();
+            jobsList.concat(remoteOkJobs);
 
+            console.log({jobsList})
+            jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
+            setJobsState({...jobsState, jobs: jobsList, jobsLoading: false});
+        })()
 
-    async componentDidMount() {
-        let remoteOkJobs = await this.remoteOkService.getRemoteOkJobs();
-        let githubJobs = await this.gitHubService.getAllGitHubRemoteJobs();
-        let stackOverflowJobs = await this.stackOverflowService.getStackOverflowJobs();
-        let weWorkRemotelyJobs = await this.weWorkRemotelyService.concatAndFormatFeed();
-        let jobsList = githubJobs.concat(remoteOkJobs, stackOverflowJobs, weWorkRemotelyJobs);
-        jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
-        this.setState({jobs: jobsList, jobsLoading: false});
-    };
+    }, []);
 
 
-    handleSearch = () => {
+   const handleSearch = () => {
         let searchJob = [];
         let search = this.props.search.toLowerCase();
-        this.state.jobs.forEach(job => {
+        jobsState.jobs.forEach(job => {
             if (job.Position.toLowerCase().includes(search)) {
                 searchJob.push(job);
             }
@@ -85,17 +78,13 @@ export default class JobBoard extends Component {
         return searchJob;
     };
 
-    render() {
-        let jobs;
-        if (this.props.search) {
-            jobs = this.handleSearch();
-        } else {
-            jobs = this.state.jobs;
+        if (props.search) {
+            const response = handleSearch()
+            setJobsState({...jobsState, jobs:response});
         }
 
         return (<div className="parent-job-container">
-
-                {jobs.length === 0 && this.state.jobsLoading === true ?
+                {jobsState.jobs.length === 0 && jobsState.jobsLoading === true ?
                         <Grid container direction="row"
                               alignItems="center" justify="center">
                                 <Lottie options={defaultOptions}
@@ -105,7 +94,7 @@ export default class JobBoard extends Component {
                             </Grid>
                      :
                     <div className={"child-job-container"}>
-                        {jobs.map(job => (
+                        {jobsState.jobs.map(job => (
                             <ExpansionPanel>
                                 <ExpansionPanelSummary
                                     expandIcon={<ExpandMoreIcon style={styles.arrow}/>}>
@@ -139,8 +128,6 @@ export default class JobBoard extends Component {
                                     <Button color="secondary" variant="contained" href={job.Source}
                                             target="_blank">
                                         Apply</Button>
-
-
                                 </ExpansionPanelActions>
                             </ExpansionPanel>
 
@@ -151,4 +138,6 @@ export default class JobBoard extends Component {
             </div>
         )
     }
-}
+
+
+export default JobBoard;

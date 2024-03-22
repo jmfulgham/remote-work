@@ -1,54 +1,54 @@
 let P = require('rss-parser');
 let parser = new P();
 
-export default class WeWorkRemotelyService {
 
-    async getWWRDevOpsJobs() {
+    const useGetWWRDevOpsJobs = async ()=>{
         let soRssUrl = '/api/weWorkRemotely/devOps';
-        let feed = await parser.parseURL(soRssUrl).catch(e => {
+        let feed = await parser.parseURL(soRssUrl).then(res=> res.items).catch(e => {
             return `WWR DevOps. error, ${e}`
         });
-        return feed.items;
+        return feed;
     }
 
-    async getWWRProductJobs(){
+    const useGetWWRProductJobs = async ()=>{
         let soRssUrl = '/api/weWorkRemotely/product';
-        let feed = await parser.parseURL(soRssUrl).catch(e => {
+        let feed = await parser.parseURL(soRssUrl).then(res=> res.items).catch(e => {
             return `WWR Product error, ${e}`
         });
-        return feed.items;
+        return feed;
     }
 
-    async getWWRDesignJobs(){
+    const useGetWWRDesignJobs= async ()=>{
         let soRssUrl = '/api/weWorkRemotely/design';
-        let feed = await parser.parseURL(soRssUrl).catch(e => {
+        let feed = await parser.parseURL(soRssUrl).then(res=> res.items).catch(e => {
             return `WWR Design error, ${e}`
         });
-        return feed.items;
+        return feed;
     }
 
-   async concatAndFormatFeed(feed){
-        let allWwrJobs;
-        let designJobs = await this.getWWRDesignJobs();
-       let productJobs= await this.getWWRProductJobs();
-       let devOpsJobs = await this.getWWRDevOpsJobs();
-       allWwrJobs = designJobs.concat(productJobs,devOpsJobs);
-       return this.handleRSSFeed(allWwrJobs);
-
+   export const useGetWeWorkRemotelyJobs = async() => {
+        let allWwrJobs = [];
+        let designJobs = await useGetWWRDesignJobs();
+       let productJobs= await useGetWWRProductJobs();
+       let devOpsJobs = await useGetWWRDevOpsJobs();
+       allWwrJobs.concat(designJobs,productJobs,devOpsJobs);
+       console.log(allWwrJobs)
+       return handleRSSFeed(allWwrJobs);
     }
 
-    handleRSSFeed(feed) {
-        return feed.map(job => {
-            return {
-                Id: job.guid,
-                Date: job.isoDate,
-                Position: job.title,
-                Company: job.company,
-                Focus: job.categories,
-                Source: job.link,
-                Apply: job.link,
-                Description: job.content,
-            };
-        });
+    const handleRSSFeed = (feed) => {
+        if (feed.length) {
+            return feed.map(job => {
+                return {
+                    Id: job.guid,
+                    Date: job.isoDate,
+                    Position: job.title,
+                    Company: job.company,
+                    Focus: job.categories,
+                    Source: job.link,
+                    Apply: job.link,
+                    Description: job.content,
+                };
+            });
+        } else return []
     }
-}

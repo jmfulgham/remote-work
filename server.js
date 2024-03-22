@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const axios = require('axios');
 const path = require('path');
 const helmet = require('helmet');
@@ -64,19 +64,13 @@ app.get('/api/github', (req, res) => {
 });
 
 app.get('/api/remoteOkRss', (req, res) => {
-    let url = 'https://remoteok.io/remote-jobs.rss';
-    axios({
+    let url = 'https://remoteok.com/rss';
+    const resp = axios({
         method: 'get',
         url
-    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
-});
-
-app.get('/api/stackOverflow', (req, res) => {
-    let url = 'https://stackoverflow.com/jobs/feed?r=true';
-    axios({
-        method: 'get',
-        url,
-    }).then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
+    })
+    console.log({resp})
+        // .then(resp => res.send(resp.data)).catch(e => `Server error, ${e}`);
 });
 
 app.get('/api/weWorkRemotely/devOps', (req, res) => {
