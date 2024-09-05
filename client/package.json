@@ -16,10 +16,10 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-lottie": "^1.2.3",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "^2.1.8",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^5.0.0",
     "rss-parser": "^3.6.3",
-    "rss-to-json": "^1.0.4",
+    "rss-to-json": "^1.0.5",
     "typeface-quicksand": "0.0.71",
     "xml-js": "^1.6.11"
   },
