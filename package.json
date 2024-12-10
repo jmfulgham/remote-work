@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/jmfulgham/remote-work#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "express": "^4.16.4",
+    "axios": "^1.7.8",
+    "express": "^4.21.2",
     "express-http-proxy": "^1.5.1",
     "helmet": "^3.16.0",
     "html-react-parser": "^0.6.2",
