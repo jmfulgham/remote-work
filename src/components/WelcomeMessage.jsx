@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
-
+import { useTheme } from '@mui/material/styles';
 const styles = {
     container: {
         display: 'flex',
@@ -15,8 +15,8 @@ const styles = {
     }
 };
 
-export default class WelcomeMessage extends Component {
-    render() {
+ const WelcomeMessage = () => {
+    const theme = useTheme();
         return (
             <div className="welcome-message-container" style={styles.container}>
                 <div className="welcome-message" style={styles.text}>
@@ -31,5 +31,6 @@ export default class WelcomeMessage extends Component {
 
             </div>
         );
-    }
 }
+
+export default WelcomeMessage

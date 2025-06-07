@@ -1,11 +1,8 @@
-import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
-const logo = require("../../../assets/rwt_logo4.png");
-require("typeface-quicksand");
+import * as logo from "../assets/rwt_logo4.png"
 
 const styles = {
 
@@ -13,23 +10,20 @@ const styles = {
         display: 'flex',
         marginLeft: "auto",
         alignItems: 'center',
-
     }
 };
-
-export default class Header extends Component {
-    render() {
+ const Header = () => {
         return (<div className={"app-bar"} style={{marginBottom: '1rem'}}>
-                <AppBar elevation={0} color={"#EBEBEB"}>
+                <AppBar elevation={0} color={"primary.main"}>
                     <Toolbar>
-                        <NavLink
-                            to="/"
-                            activeStyle={{
+                        <a
+                            href="/public"
+                            style={{
                                 color: "#A24FFC",
-                                textDecoration: 'none'
+                                textDecoration: 'none',
                             }}>
-                            <img src={logo} alt="remotework(tech)"/>
-                        </NavLink>
+                            <img srcSet={"../assets/rwt_logo4.png"} alt="remotework(tech)"/>
+                        </a>
                         <Typography variant="subtitle1" style={{color: "#27C4A8"}}>beta</Typography>
                         <div style={styles.social}>
                             <Typography variant="h6">
@@ -43,5 +37,6 @@ export default class Header extends Component {
                 </AppBar>
             </div>
         )
-    }
 }
+
+export default Header
