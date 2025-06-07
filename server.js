@@ -8,6 +8,7 @@ app.use((req, res, next) => {
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 //TODO error handling
+//TODO refactor feed call for reusability
 app.get('/api/remoteOkRss', async (req, res) => {
     let url = 'https://remoteok.com/rss';
     try {
