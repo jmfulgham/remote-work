@@ -4,7 +4,7 @@
   "version": "3.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host localhost & nodemon server.js",
+    "dev": "vite & nodemon server.js",
     "build": "vite build",
     "lint": "eslint",
     "preview": "vite preview"
