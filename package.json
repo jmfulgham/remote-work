@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host localhost & nodemon server.js",
     "build": "vite build",
-    "lint": "eslint rewrite/remote-work-rewrite",
+    "lint": "eslint",
     "preview": "vite preview"
   },
   "dependencies": {
