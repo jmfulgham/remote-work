@@ -1,18 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {useGetRemoteOkJobs} from '../hooks/RemoteOkHooks';
-import Typography from '@material-ui/core/Typography';
-import {Accordion} from '@material-ui/core';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AccordionActions from '@material-ui/core/AccordionActions';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
+import {useGetRemoteOkJobs} from '../../hooks/RemoteOkHooks.js';
+import "./styles.css";
 
-import parse from 'html-react-parser';
 
 import moment from 'moment';
+import JobCard from "../JobCard/JobCard.jsx";
 
 moment().format("MMM Do YY");
 
@@ -41,9 +33,10 @@ const JobBoard = ({search}) => {
     useEffect(() => {
         (async () => {
            const {jobs, error, loading} = await useGetRemoteOkJobs()
+            console.log(jobs)
             if(loading)setIsLoading(true)
             if(error)setIsError(true)
-            console.log(jobs[0])
+            // console.log(jobs[0])
            if(jobs.length) setJobsList(jobs);
             // jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
 
@@ -71,9 +64,7 @@ const JobBoard = ({search}) => {
             {jobsList.length === 0 || isLoading ? <div> Loading </div>
                 : (<div className={"child-job-container"}>
                     {jobsList.map((job, i) =>(
-                        <div key={i}>
-                            <h2><a href={job.Source}>{job.Position}</a></h2>
-                        </div>
+                        <JobCard job={job} key={job.id}/>
                     ))}
                 </div>
                 )}
