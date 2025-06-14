@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {useGetRemoteOkJobs} from '../../hooks/RemoteOkHooks.js';
+import {useGetRemoteOkJobs} from '../hooks/RemoteOkHooks.js';
 import "./styles.css";
 
 
 import moment from 'moment';
-import JobCard from "../JobCard/JobCard.jsx";
+import JobCard from "./JobCard/JobCard.jsx";
 
 moment().format("MMM Do YY");
 
@@ -33,10 +33,8 @@ const JobBoard = ({search}) => {
     useEffect(() => {
         (async () => {
            const {jobs, error, loading} = await useGetRemoteOkJobs()
-            console.log(jobs)
             if(loading)setIsLoading(true)
             if(error)setIsError(true)
-            // console.log(jobs[0])
            if(jobs.length) setJobsList(jobs);
             // jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
 

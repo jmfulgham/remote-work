@@ -10,7 +10,7 @@ const styles = {
 
     },
     text: {
-        alignSelf: 'flex-end',
+        alignSelf: 'center',
         textAlign: 'center',
     }
 };

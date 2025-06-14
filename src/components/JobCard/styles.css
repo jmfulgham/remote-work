@@ -1,0 +1,80 @@
+.job-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 1px solid #A24FFC;
+    height: 270px;
+    width: 400px;
+    margin: 25px;
+    padding: 20px;
+}
+
+.company-logo {
+    height: 64px;
+    width: 64px;
+}
+
+.job-card-header {
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.job-post-date {
+    margin: 0;
+    font-size: 12px;
+    align-content: center;
+}
+
+.company-name {
+    margin: 0
+}
+
+h3 {
+    margin-top: 5px;
+    font-size: 1.5rem;
+}
+
+.job-details {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.tag-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.apply-container {
+    border-top: 1px solid #EBEBEB;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.btn {
+    border: 1px #A24FFC;
+    border-radius: 15px;
+    text-transform: none;
+}
+
+.btn:hover {
+    background-color: #A24FFC;
+    color: white;
+}
+
+.tag-list {
+    height: 20px;
+    width: 70px;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: #EBEBEB;
+    border-radius: 5px;
+    margin: 3px;
+}
