@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useGetRemoteOkJobs} from '../hooks/RemoteOkHooks.js';
-import "./styles.css";
 
 
 import moment from 'moment';
