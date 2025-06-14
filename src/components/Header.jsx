@@ -1,8 +1,7 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import * as logo from "../assets/rwt_logo4.png"
+import {AppBar} from '@mui/material';
+import {Toolbar} from '@mui/material';
+import {Typography} from '@mui/material';
 
 const styles = {
 

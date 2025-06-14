@@ -3,7 +3,7 @@ import "./styles.css";
 import {Button} from "@mui/material";
 
 const JobCard = ({job}) => {
-    const {company, position, salary_min, salary_max, url, date, tags} = job;
+    const {company, position, salary_min, salary_max, url, date, tags, id} = job;
     const jobDate = new Date(date);
     const today = new Date();
     const jobAge = Math.floor((today.getTime() - jobDate.getTime()) / (1000 * 60 * 60 * 24))
@@ -22,7 +22,7 @@ const JobCard = ({job}) => {
         }
     }
 
-    return (<div className={"job-card"}>
+    return (<div className={"job-card"} key={id}>
         <div className={"job-card-header"}>
             <h4 className={"company-name"}>{company}</h4>
             <p className={"job-post-date"}>{handleJobAge(jobAge)}</p>

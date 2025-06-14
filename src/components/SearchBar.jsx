@@ -1,8 +1,5 @@
 import React,  {useState} from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import Search from '@mui/icons-material/Search';
-import TextField from '@material-ui/core/TextField';
-import {InputAdornment} from "@mui/material";
+import {TextField} from '@mui/material';
 
 const styles = {
     parent: {

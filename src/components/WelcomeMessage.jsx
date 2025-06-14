@@ -1,6 +1,6 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { useTheme } from '@mui/material/styles';
+import {Typography, useTheme} from '@mui/material';
+
 const styles = {
     container: {
         display: 'flex',
