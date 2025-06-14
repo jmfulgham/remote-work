@@ -1,10 +1,11 @@
-// let parser = new Parser();
-const parser = new window.RSSParser()
+
 export const useGetRemoteOkJobs = async () => {
     const remoteOkUrl = '/api/remoteOkRss';
-    const feed = await parser.parseURL(remoteOkUrl)
-    if (feed.items.length) {
-        const jobs = handleRemoteOkJobs(feed)
+    const resp = await fetch(remoteOkUrl)
+    const data = await resp.json()
+
+    if (data.length) {
+        const jobs = handleRemoteOkJobs(data)
         return {
             jobs,
             error: false,
@@ -15,16 +16,7 @@ export const useGetRemoteOkJobs = async () => {
 }
 
 const handleRemoteOkJobs = (jobs) => {
-    if (jobs.items.length) {
-        return jobs.items.slice(0, 10).map(job => {
-            return {
-                Id: job.guid,
-                Date: job.isoDate,
-                Position: job.title,
-                Apply: job.link,
-                Source: job.link,
-                Description: job.content,
-            };
-        });
-    } else return []
+    if (jobs.length) return jobs.slice(1, jobs.length).map(job => job);
+    else return []
 }
+
