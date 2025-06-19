@@ -13,11 +13,8 @@ const styles = {
   },
  parentContainer: {
     margin: "auto"
-    // display: "flex",
-   // justifyContent: "center"
  },
   childContainer: {
-    // width: '100%',
     justifyContent: "center"
   }
 };
