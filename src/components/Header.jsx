@@ -13,7 +13,7 @@ const styles = {
 const Header = () => {
   return (
     <div className={"app-bar"} style={{ marginBottom: "1rem" }}>
-      <AppBar elevation={0} color={"primary.main"}>
+      <AppBar elevation={0} color={"primary.main"} position={"fixed"}>
         <Toolbar>
           <a
             href="/public"

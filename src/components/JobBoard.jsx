@@ -7,20 +7,14 @@ import { useGetWeWorkRemotelyJobs } from "../hooks/WeWorkRemotelyHooks.js";
 
 moment().format("MMM Do YY");
 
-// require('typeface-questrial');
 const styles = {
   arrow: {
     color: "#27C4A8",
   },
-  date: {
+ parentContainer: {
     display: "flex",
-    width: "100%",
-    alignSelf: "flex-end",
-    justifyContent: "flex-end",
-  },
-  text: {
-    maxWidth: "100%",
-  },
+   justifyContent: "center"
+ }
 };
 
 const JobBoard = ({ searchTerm, setIsSearchError }) => {
@@ -68,7 +62,7 @@ const JobBoard = ({ searchTerm, setIsSearchError }) => {
   }, [searchTerm]);
 
   return (
-    <div className="parent-job-container">
+    <div className="parent-job-container" style={styles.parentContainer}>
       {isLoading && jobsList.length === 0 ? (
         <div> Loading </div>
       ) : searchTerm && jobsList.length  === 0 ? (

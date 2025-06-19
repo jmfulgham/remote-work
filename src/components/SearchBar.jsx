@@ -4,8 +4,10 @@ import { TextField } from "@mui/material";
 const styles = {
   parent: {
     display: "flex",
+    justifyContent: "center"
   },
   search: {
+    marginTop: "2rem",
     padding: "2rem",
   },
   textField: {
