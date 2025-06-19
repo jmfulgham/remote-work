@@ -35,17 +35,11 @@ let parser = new Parser();
 
     }
 
-    //TODO promise.all?
    export const useGetWeWorkRemotelyJobs = async() => {
-        const allWwrJobs = [];
         try {
-            const engineeringJobs = await useGetWWREngineerJobs()
-            const designJobs = await useGetWWRDesignJobs();
-            const productJobs= await useGetWWRProductJobs();
-            const devOpsJobs = await useGetWWRDevOpsJobs();
-            allWwrJobs.concat(engineeringJobs, designJobs,productJobs,devOpsJobs);
-
-            const jobs = handleRSSFeed(engineeringJobs.concat(designJobs, productJobs, devOpsJobs))
+            const responses = Promise.all([useGetWWREngineerJobs(), useGetWWRDesignJobs(), useGetWWRProductJobs(),useGetWWRDevOpsJobs()])
+            const flatJobs = await responses;
+            const jobs = handleRSSFeed(flatJobs.flat())
             return {
                 jobs,
                 error: {},
