@@ -1,12 +1,21 @@
-# React + Vite
+# remotework(tech)
+A beta version job board that pulls from RSS and JSON data feeds across the web.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Demo
+Visit the job board [here](https://remote-work-kappa.vercel.app/)!
+![img.png](img.png)
 
-Currently, two official plugins are available:
+### Built With
+- React
+- Vite
+- Hosted on Vercel
+- MUI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Local Development
 
-## Expanding the ESLint configuration
+- Please run `nvm use` to choose the correct version of Node.
+- Then `npm i` to install the correct dependencies.
+- Afterward run `npm run dev` to start the application.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
