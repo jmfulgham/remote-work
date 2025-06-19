@@ -4,34 +4,38 @@ import { Toolbar } from "@mui/material";
 import { Typography } from "@mui/material";
 
 const styles = {
+  appBar: { marginBottom: "1rem" },
   social: {
     display: "flex",
     marginLeft: "auto",
     alignItems: "center",
   },
+  link:{
+    color: "#A24FFC",
+    textDecoration: "none",
+  },
+  beta: { color: "#27C4A8" },
+  contact: { textDecoration: "none", color: "#27C4A8" }
 };
 const Header = () => {
   return (
-    <div className={"app-bar"} style={{ marginBottom: "1rem" }}>
-      <AppBar elevation={0} color={"primary.main"} position={"fixed"}>
+    <div className={"app-bar"} style={styles.appBar}>
+      <AppBar elevation={0} color={"primary.main"} position={"static"}>
         <Toolbar>
           <a
-            href="/public"
-            style={{
-              color: "#A24FFC",
-              textDecoration: "none",
-            }}
+            href="/"
+            style={styles.link}
           >
             <img srcSet={"../assets/rwt_logo4.png"} alt="remotework(tech)" />
           </a>
-          <Typography variant="subtitle1" style={{ color: "#27C4A8" }}>
+          <Typography variant="subtitle1" style={styles.beta}>
             beta
           </Typography>
           <div style={styles.social}>
             <Typography variant="h6">
               <a
                 href="mailto:mo@jaimo.net?subject=Hey! I love remoteWork.tech!"
-                style={{ textDecoration: "none", color: "#27C4A8" }}
+                style={styles.contact}
               >
                 Contact
               </a>

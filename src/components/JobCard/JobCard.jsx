@@ -26,7 +26,7 @@ const JobCard = ({ job, index }) => {
   };
 
   return (
-    <div className={"job-card"} key={index}>
+    <div className={"job-card"} key={index} >
       <div className={"job-card-header"}>
         <h4 className={"company-name"}>{company}</h4>
         <p className={"job-post-date"}>{handleJobAge(jobAge)}</p>

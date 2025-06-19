@@ -2,18 +2,13 @@ import React from "react";
 import { TextField } from "@mui/material";
 
 const styles = {
-  parent: {
-    display: "flex",
-    justifyContent: "center"
-  },
-  search: {
-    marginTop: "2rem",
-    padding: "2rem",
+  parentSearchContainer: {
+    margin: "auto",
   },
   textField: {
     fontSize: "2.25rem",
     lineHeight: "normal",
-    width: "30rem",
+    width: "100%",
   },
   iconHover: {
     "&:hover": {
@@ -30,8 +25,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, isSearchError }) => {
   };
 
   return (
-    <div style={styles.parent}>
-      <div style={styles.search}>
+    <div style={styles.parentSearchContainer} className={"search-parent-container"}>
         <TextField
           error={isSearchError}
           value={handleSearch(searchTerm)}
@@ -45,7 +39,6 @@ const SearchBar = ({ searchTerm, setSearchTerm, isSearchError }) => {
           }
           onChange={(e) => setSearchTerm(e.target.value)}
         ></TextField>
-      </div>
     </div>
   );
 };

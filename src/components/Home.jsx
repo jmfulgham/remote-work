@@ -8,6 +8,7 @@ import WelcomeMessage from "./WelcomeMessage";
 const styles = {
     container: {
         display: "flex", flexDirection: "column", justifyContent: "center",
+        margin: "1em",
     }
 }
 const Home = () => {

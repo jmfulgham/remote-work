@@ -12,9 +12,14 @@ const styles = {
     color: "#27C4A8",
   },
  parentContainer: {
-    display: "flex",
-   justifyContent: "center"
- }
+    margin: "auto"
+    // display: "flex",
+   // justifyContent: "center"
+ },
+  childContainer: {
+    // width: '100%',
+    justifyContent: "center"
+  }
 };
 
 const JobBoard = ({ searchTerm, setIsSearchError }) => {
@@ -68,7 +73,7 @@ const JobBoard = ({ searchTerm, setIsSearchError }) => {
       ) : searchTerm && jobsList.length  === 0 ? (
         <div>Please try your search again</div>
       ) : (
-        <div className={"child-job-container"}>
+        <div className={"child-job-container"} style={styles.childContainer}>
           {jobsList.map((job, i) => (
             <JobCard job={job} index={i} />
           ))}
