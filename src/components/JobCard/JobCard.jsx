@@ -29,8 +29,8 @@ const JobCard = ({job}) => {
         </div>
         <div className={"job-details"}>
             <h3>{position}</h3>
-            <div className={"tag-container"}>{tags.slice(0,4).map((tag) => (<div className={"tag-list"}>{tag}</div>))}
-            </div>
+            {tags && <div className={"tag-container"}>{tags.slice(0,4).map((tag) => (<div className={"tag-list"}>{tag}</div>))}
+            </div> }
         </div>
         <div className={"apply-container"}>
             {salary_min && salary_max ? <h5>Salary range ${salary_min} - ${salary_max}</h5> :

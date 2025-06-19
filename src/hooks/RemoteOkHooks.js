@@ -1,18 +1,19 @@
-
 export const useGetRemoteOkJobs = async () => {
-    const remoteOkUrl = '/api/remoteOkRss';
-    const resp = await fetch(remoteOkUrl)
-    const data = await resp.json()
+    try {
+        const feed = await fetch("https://remoteok.com/api")
+        const data = await feed.json()
 
-    if (data.length) {
-        const jobs = handleRemoteOkJobs(data)
-        return {
-            jobs,
-            error: false,
-            loading: false
+        if (data.length) {
+            const jobs = handleRemoteOkJobs(data)
+            return {
+                jobs,
+                error: false,
+                loading: false
+            }
         }
+    } catch (e) {
+        return {jobs: [], error: {message: e}, loading: true}
     }
-    return {jobs: [], error: true, loading: true}
 }
 
 const handleRemoteOkJobs = (jobs) => {
