@@ -10,10 +10,11 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 //TODO error handling
 //TODO refactor feed call for reusability
 app.get('/api/remoteOkRss', async (req, res) => {
-    let url = 'https://remoteok.com/rss';
+    let url = 'https://remoteok.com/api';
     try {
         const feed = await fetch(url)
-        res.send(await feed.text())
+        const data =await feed.json()
+        res.send(data)
     } catch (e){
         console.log({e})
         res.send(e)
