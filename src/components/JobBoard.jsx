@@ -16,6 +16,10 @@ const styles = {
  },
   childContainer: {
     justifyContent: "center"
+  },
+  error: {
+    marginTop: "1rem",
+    color: "red"
   }
 };
 
@@ -23,7 +27,7 @@ const JobBoard = ({ searchTerm, setIsSearchError }) => {
   const [jobsList, setJobsList] = useState([]); // displayed list
   const [originalJobList, setOriginalJobList] = useState([]); // source of truth for comparison
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -65,7 +69,8 @@ const JobBoard = ({ searchTerm, setIsSearchError }) => {
 
   return (
     <div className="parent-job-container" style={styles.parentContainer}>
-      {isLoading && jobsList.length === 0 ? (
+      {isError && isLoading && <div style={styles.error}>There was a problem grabbing the jobs, please refresh the page</div>}
+      {isLoading ? (
         <div> Loading </div>
       ) : searchTerm && jobsList.length  === 0 ? (
         <div>Please try your search again</div>

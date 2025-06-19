@@ -4,9 +4,8 @@ export const useGetRemoteOkJobs = async () => {
     const data = await feed.json();
 
     if (data.length) {
-      const jobs = handleRemoteOkJobs(data);
       return {
-        jobs,
+        jobs: data.slice(1, data.length),
         error: false,
         loading: false,
       };
@@ -16,7 +15,3 @@ export const useGetRemoteOkJobs = async () => {
   }
 };
 
-const handleRemoteOkJobs = (jobs) => {
-  if (jobs.length) return jobs.slice(1, jobs.length).map((job) => job);
-  else return [];
-};
