@@ -7,27 +7,27 @@ import { useGetWeWorkRemotelyJobs } from "../hooks/WeWorkRemotelyHooks.js";
 
 moment().format("MMM Do YY");
 
-// require('typeface-questrial');
 const styles = {
   arrow: {
     color: "#27C4A8",
   },
-  date: {
-    display: "flex",
-    width: "100%",
-    alignSelf: "flex-end",
-    justifyContent: "flex-end",
+ parentContainer: {
+    margin: "auto"
+ },
+  childContainer: {
+    justifyContent: "center"
   },
-  text: {
-    maxWidth: "100%",
-  },
+  error: {
+    marginTop: "1rem",
+    color: "red"
+  }
 };
 
 const JobBoard = ({ searchTerm, setIsSearchError }) => {
   const [jobsList, setJobsList] = useState([]); // displayed list
   const [originalJobList, setOriginalJobList] = useState([]); // source of truth for comparison
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -68,13 +68,14 @@ const JobBoard = ({ searchTerm, setIsSearchError }) => {
   }, [searchTerm]);
 
   return (
-    <div className="parent-job-container">
-      {isLoading && jobsList.length === 0 ? (
+    <div className="parent-job-container" style={styles.parentContainer}>
+      {isError && isLoading && <div style={styles.error}>There was a problem grabbing the jobs, please refresh the page</div>}
+      {isLoading ? (
         <div> Loading </div>
       ) : searchTerm && jobsList.length  === 0 ? (
         <div>Please try your search again</div>
       ) : (
-        <div className={"child-job-container"}>
+        <div className={"child-job-container"} style={styles.childContainer}>
           {jobsList.map((job, i) => (
             <JobCard job={job} index={i} />
           ))}

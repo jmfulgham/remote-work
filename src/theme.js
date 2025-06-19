@@ -1,8 +1,10 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  display: "flex",
+  flexDirection: "column",
+
   cssVariables: true,
-  width: "100%",
   palette: {
     primary: {
       main: "#EBEBEB",
