@@ -69,9 +69,9 @@ const JobBoard = ({ searchTerm, setIsSearchError }) => {
 
   return (
     <div className="parent-job-container">
-      {isLoading ? (
+      {isLoading && jobsList.length === 0 ? (
         <div> Loading </div>
-      ) : jobsList.length === 0 ? (
+      ) : searchTerm && jobsList.length  === 0 ? (
         <div>Please try your search again</div>
       ) : (
         <div className={"child-job-container"}>
