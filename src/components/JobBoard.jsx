@@ -4,6 +4,7 @@ import {useGetRemoteOkJobs} from '../hooks/RemoteOkHooks.js';
 
 import moment from 'moment';
 import JobCard from "./JobCard/JobCard.jsx";
+import {useGetWeWorkRemotelyJobs} from "../hooks/WeWorkRemotelyHooks.js";
 
 moment().format("MMM Do YY");
 
@@ -32,14 +33,18 @@ const JobBoard = ({search}) => {
     useEffect(() => {
         (async () => {
            const {jobs, error, loading} = await useGetRemoteOkJobs()
+            const {jobs: wwRemotelyJobs, error: wwRemotelyError} = await useGetWeWorkRemotelyJobs()
             if(loading)setIsLoading(true)
-            if(error)setIsError(true)
-           if(jobs.length) setJobsList(jobs);
-            // jobsList.sort((a,b)=> new Date(b.Date).getTime() - new Date(a.Date).getTime());
-
+            if(error.message || wwRemotelyError.message) setIsError(true)
+           if(jobs.length || wwRemotelyJobs.length) {
+               const newList = jobs.concat(wwRemotelyJobs)
+               newList.sort((a,b)=> new Date(b.date).getTime() - new Date(a.date).getTime());
+               setJobsList(newList);
+           }
         })()
 
     }, []);
+    console.log(jobsList)
 
      // const handleSearch = () => {
      //     let searchJob = [];
@@ -61,7 +66,7 @@ const JobBoard = ({search}) => {
             {jobsList.length === 0 || isLoading ? <div> Loading </div>
                 : (<div className={"child-job-container"}>
                     {jobsList.map((job, i) =>(
-                        <JobCard job={job} key={job.id}/>
+                        <JobCard job={job} key={i}/>
                     ))}
                 </div>
                 )}
