@@ -14,16 +14,14 @@ const styles = {
 
 const Home =  () =>{
     const [searchTerm, setSearchTerm] = useState("")
-    const handleSearch = input => {
-        setSearchTerm(input);
-    };
+    const [isSearchError, setIsSearchError] = useState(false)
 
     return (
         <div style={styles.parent}>
                     <Header/>
                     <WelcomeMessage />
-                    <SearchBar searchTerm={handleSearch} />
-                    <JobBoard search={searchTerm} />
+                    <SearchBar isSearchError={isSearchError} setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>
+                    <JobBoard setIsSearchError={setIsSearchError} searchTerm={searchTerm}/>
         </div>
     )
 };
