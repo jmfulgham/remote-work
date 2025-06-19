@@ -14,7 +14,7 @@ let parser = new Parser();
         const soRssUrl = "https://weworkremotely.com/categories/remote-programming-jobs.rss";
         const feed = await fetch(soRssUrl);
         return await parser.parseString(await feed.text()).then(res=> res.items).catch(e => {
-            return `WWR Engineering error, ${e}`
+            throw new Error(`WWR Engineering error, ${e}`)
         });
     }
 
@@ -22,7 +22,7 @@ let parser = new Parser();
         const soRssUrl = 'https://weworkremotely.com/categories/remote-product-jobs.rss';
         const feed = await fetch(soRssUrl);
         return await parser.parseString(await feed.text()).then(res=> res.items).catch(e => {
-            return `WWR Product error, ${e}`
+            throw new Error(`WWR Product error, ${e}`)
         });
     }
 
@@ -30,7 +30,7 @@ let parser = new Parser();
         let soRssUrl = 'https://weworkremotely.com/categories/remote-design-jobs.rss';
         const feed = await fetch(soRssUrl);
         return await parser.parseString(await feed.text()).then(res=> res.items).catch(e => {
-            return `WWR Design error, ${e}`
+            throw new Error(`WWR Design error, ${e}`)
         });
 
     }
